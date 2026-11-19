@@ -26,21 +26,22 @@ export function BrandsPage() {
   return (
     <PageTransition>
       {/* Page Header */}
-      <section className="bg-[#EAF1FA] border-b border-[#D4DFEE] wood-grain-surface py-14 lg:py-18">
+      <section className="bg-[#EAF1FA] border-b border-[#D4DFEE] wood-grain-surface py-8 sm:py-12 lg:py-18">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.12 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl"
           >
-            <p className="text-sm font-medium text-[#0E4DA4] mb-2">
+            <p className="text-xs sm:text-sm font-medium text-[#0E4DA4] mb-1 sm:mb-2">
               Exclusive Dealers In
             </p>
-            <h1 className="font-serif text-3xl sm:text-5xl font-semibold text-[#0B1D3A] tracking-tight leading-[1.12] mb-4 [text-wrap:balance]">
+            <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-semibold text-[#0B1D3A] tracking-tight leading-[1.15] mb-2 sm:mb-4 [text-wrap:balance]">
               Trusted Plywood, Paint &amp; Hardware Brands
             </h1>
-            <p className="text-base text-[#485A72] leading-relaxed">
+            <p className="text-xs sm:text-base text-[#485A72] leading-relaxed">
               We are authorized dealers for leading plywood, laminate, paint, kitchen fitting,
               and architectural hardware manufacturers—guaranteeing genuine stock and official
               brand warranties across every order.
@@ -50,14 +51,20 @@ export function BrandsPage() {
       </section>
 
       {/* Brands Directory */}
-      <section className="py-12 lg:py-18 bg-[#F6F9FC]">
+      <section className="py-6 sm:py-10 lg:py-16 bg-[#F6F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Interactive Category Filter */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 mb-8 border-b border-[#D4DFEE]">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.12 }}
+            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 mb-4 sm:pb-8 sm:mb-8 border-b border-[#D4DFEE]"
+          >
             <div
               role="tablist"
               aria-label="Filter brands by category"
-              className="inline-flex flex-wrap items-center gap-1 p-1 bg-[#E4EEF9] rounded-lg border border-[#D4DFEE] self-start"
+              className="flex items-center gap-1 p-1 bg-[#E4EEF9] rounded-lg border border-[#D4DFEE] overflow-x-auto max-w-full scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch]"
             >
               {BRAND_FILTERS.map((opt) => {
                 const active = filter === opt.value;
@@ -83,7 +90,7 @@ export function BrandsPage() {
             <p className="text-xs text-[#5E718B] tabular-nums">
               Showing {visibleBrands.length} of {BRANDS.length} authorized brands
             </p>
-          </div>
+          </motion.div>
 
           {/* Clean Brand Logo Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -92,11 +99,11 @@ export function BrandsPage() {
                 key={brand.id}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.12 }}
+                viewport={{ once: false, amount: 0.12 }}
                 transition={{
                   duration: 0.4,
                   delay: Math.min(index * 0.04, 0.2),
-                  ease: [0.16, 1, 0.3, 1],
+                  ease: [0.22, 1, 0.36, 1],
                 }}
                 className="group bg-white rounded-xl border border-[#D4DFEE] p-6 flex flex-col justify-between shadow-[0_2px_8px_rgba(11,29,58,0.03)] hover:shadow-[0_12px_26px_rgba(11,29,58,0.08)] hover:border-[#9AB7DC] hover:-translate-y-1 transition-all duration-200"
               >
@@ -136,7 +143,13 @@ export function BrandsPage() {
           </div>
 
           {/* Bulk Requirement Note */}
-          <div className="mt-14 p-7 sm:p-9 rounded-xl bg-white border border-[#D4DFEE] flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.12 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-14 p-7 sm:p-9 rounded-xl bg-white border border-[#D4DFEE] flex flex-col md:flex-row md:items-center justify-between gap-6"
+          >
             <div className="max-w-xl">
               <h3 className="font-serif text-xl font-semibold text-[#0B1D3A] mb-1.5">
                 Looking for a specific architectural grade or bulk project pricing?
@@ -153,7 +166,7 @@ export function BrandsPage() {
               <span>Submit Material List</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
     </PageTransition>

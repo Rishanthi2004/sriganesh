@@ -12,8 +12,10 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
+import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ProductsPage } from './pages/ProductsPage';
@@ -49,15 +51,18 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <div className="min-h-screen flex flex-col bg-[#F6F9FC] text-[#0B1D3A]">
-        <Navbar />
-        <main className="flex-1">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <div className="min-h-screen flex flex-col bg-[#F6F9FC] text-[#0B1D3A]">
+          <Navbar />
+          <main className="flex-1">
+            <AnimatedRoutes />
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+        </div>
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }

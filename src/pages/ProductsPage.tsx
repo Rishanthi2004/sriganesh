@@ -6,15 +6,16 @@ import { PRODUCTS, ProductCategoryGroup } from '../data/catalog';
 import { PageTransition } from '../components/PageTransition';
 import { ProductCard } from '../components/ProductCard';
 import { ProductShowcaseStrip } from '../components/ProductShowcaseStrip';
+import { useLanguage } from '../context/LanguageContext';
 
 type FilterValue = 'All' | ProductCategoryGroup;
 
-const FILTER_OPTIONS: { label: string; value: FilterValue }[] = [
-  { label: 'All Products', value: 'All' },
-  { label: 'Plywood', value: 'Plywood' },
-  { label: 'Paints', value: 'Paints' },
-  { label: 'Hardware', value: 'Hardware' },
-];
+const FILTER_ACTIVE_STYLES: Record<FilterValue, string> = {
+  All: 'bg-[#0B1D3A] text-[#F6F9FC] shadow-xs',
+  Plywood: 'bg-[#0E4DA4] text-white shadow-sm',
+  Paints: 'bg-[#16803C] text-white shadow-sm',
+  Hardware: 'bg-[#D61F26] text-white shadow-sm',
+};
 
 const VALID_CATEGORIES: ProductCategoryGroup[] = ['Plywood', 'Paints', 'Hardware'];
 
@@ -27,11 +28,19 @@ function parseCategoryParam(param: string | null): FilterValue {
 }
 
 export function ProductsPage() {
+  const { language, t } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
   const [activeFilter, setActiveFilter] = useState<FilterValue>(() =>
     parseCategoryParam(searchParams.get('category'))
   );
   const [searchQuery, setSearchQuery] = useState('');
+
+  const filterOptions: { label: string; value: FilterValue }[] = [
+    { label: t('allProducts'), value: 'All' },
+    { label: language === 'ta' ? 'ப்ளைவுட்' : 'Plywood', value: 'Plywood' },
+    { label: language === 'ta' ? 'பெயின்ட்ஸ்' : 'Paints', value: 'Paints' },
+    { label: language === 'ta' ? 'ஹார்ட்வேர்' : 'Hardware', value: 'Hardware' },
+  ];
 
   useEffect(() => {
     setActiveFilter(parseCategoryParam(searchParams.get('category')));
@@ -62,44 +71,26 @@ export function ProductsPage() {
 
   return (
     <PageTransition>
-      {/* Page Header */}
-      <section className="bg-[#EAF1FA] border-b border-[#D4DFEE] wood-grain-surface py-14 lg:py-18">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-3xl"
-          >
-            <p className="text-sm font-medium text-[#0E4DA4] mb-2">
-              Product Catalog · {PRODUCTS.length} Product Ranges
-            </p>
-            <h1 className="font-serif text-3xl sm:text-5xl font-semibold text-[#0B1D3A] tracking-tight leading-[1.12] mb-4 [text-wrap:balance]">
-              Plywood, Paints &amp; Architectural Hardware
-            </h1>
-            <p className="text-base text-[#485A72] leading-relaxed">
-              Explore our complete range of structural panels, decorative surfaces, interior &amp;
-              exterior paints, wood finishes, doors, and precision fittings. Select any item to
-              open full specifications, finishes, and stocked brands.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Showroom Highlights Strip + Filterable Catalog */}
-      <section className="py-12 lg:py-16 bg-[#F6F9FC]">
+      <section className="py-5 sm:py-8 lg:py-12 bg-[#F6F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* 5-Column Framed Reference-Style Showcase Strip */}
+          {/* 5-Column Framed Reference-Style Showcase Strip (Swipeable on Mobile) */}
           <ProductShowcaseStrip />
 
-          {/* Interactive Segmented Filter + Search */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 mb-8 border-b border-[#D4DFEE]">
+          {/* Interactive Segmented Filter + Search (Compact on Mobile) */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.12 }}
+            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 mb-5 sm:pb-8 sm:mb-8 border-b border-[#D4DFEE]"
+          >
             <div
               role="tablist"
               aria-label="Filter product categories"
-              className="inline-flex flex-wrap items-center gap-1 p-1 bg-[#E4EEF9] rounded-lg border border-[#D4DFEE] self-start"
+              className="flex items-center gap-1 p-1 bg-[#E4EEF9] rounded-lg border border-[#D4DFEE] overflow-x-auto max-w-full scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch]"
             >
-              {FILTER_OPTIONS.map((option) => {
+              {filterOptions.map((option) => {
                 const isActive = activeFilter === option.value;
                 return (
                   <button
@@ -108,9 +99,9 @@ export function ProductsPage() {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => handleFilterChange(option.value)}
-                    className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-150 whitespace-nowrap cursor-pointer ${
+                    className={`px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold rounded-md transition-all duration-150 whitespace-nowrap cursor-pointer shrink-0 ${
                       isActive
-                        ? 'bg-[#0B1D3A] text-[#F6F9FC] shadow-xs'
+                        ? FILTER_ACTIVE_STYLES[option.value]
                         : 'text-[#485A72] hover:text-[#0B1D3A]'
                     }`}
                   >
@@ -126,9 +117,9 @@ export function ProductsPage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search plywood, paints, hinges..."
+                placeholder={t('searchPlaceholder')}
                 aria-label="Search products"
-                className="w-full pl-10 pr-9 py-2.5 text-sm bg-white text-[#0B1D3A] placeholder:text-[#7386A0] border border-[#D4DFEE] rounded-lg focus:outline-none focus:border-[#0E4DA4] transition-colors"
+                className="w-full pl-10 pr-9 py-2 sm:py-2.5 text-xs sm:text-sm bg-white text-[#0B1D3A] placeholder:text-[#7386A0] border border-[#D4DFEE] rounded-lg focus:outline-none focus:border-[#0E4DA4] transition-colors"
               />
               {searchQuery && (
                 <button
@@ -141,16 +132,16 @@ export function ProductsPage() {
                 </button>
               )}
             </div>
-          </div>
+          </motion.div>
 
           {/* Results Count */}
-          <p className="text-xs text-[#5E718B] mb-6 tabular-nums">
-            Showing {filteredProducts.length} of {PRODUCTS.length} product ranges
+          <p className="text-xs text-[#5E718B] mb-4 sm:mb-6 tabular-nums">
+            {t('showingText')} {filteredProducts.length} {t('productRangesText')} {PRODUCTS.length}
           </p>
 
-          {/* Compact Uniform Grid */}
+          {/* Compact Uniform Grid (Side by side 2 cards on mobile) */}
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6 lg:gap-7">
               {filteredProducts.map((product, index) => (
                 <ProductCard
                   key={product.id}
@@ -162,10 +153,12 @@ export function ProductsPage() {
           ) : (
             <div className="py-16 px-6 text-center bg-white rounded-xl border border-[#D4DFEE]">
               <h2 className="font-serif text-xl font-semibold text-[#0B1D3A] mb-2">
-                No matching products found
+                {language === 'ta' ? 'தயாரிப்புகள் எதுவும் கிடைக்கவில்லை' : 'No matching products found'}
               </h2>
               <p className="text-sm text-[#485A72] mb-5">
-                Try clearing your search or switching back to all product categories.
+                {language === 'ta'
+                  ? 'தேடலை அழித்து அல்லது அனைத்து வகைகளையும் தேர்ந்தெடுத்து மீண்டும் முயலவும்.'
+                  : 'Try clearing your search or switching back to all product categories.'}
               </p>
               <button
                 type="button"
@@ -175,7 +168,7 @@ export function ProductsPage() {
                 }}
                 className="px-4 py-2 text-sm font-medium text-[#F6F9FC] bg-[#0E4DA4] rounded-lg hover:bg-[#093678] transition-colors cursor-pointer"
               >
-                Reset Filters
+                {language === 'ta' ? 'அனைத்தையும் காட்டு' : 'Reset Filters'}
               </button>
             </div>
           )}

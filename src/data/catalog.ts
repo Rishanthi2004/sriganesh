@@ -56,12 +56,18 @@ export const SHOWROOM_IMAGES = {
 };
 
 export const STORE_INFO = {
-  name: 'Sri Ganesh Plywood & Hardwares',
-  fullName: 'Sri Ganesh Plywood & Hardwares (SGPH)',
-  shortName: 'SGPH',
+  name: 'ஸ்ரீ கணேஷ் பிளைவுட் & ஹார்ட்வேர்',
+  fullName: 'ஸ்ரீ கணேஷ் பிளைவுட் & ஹார்ட்வேர் (SGPH)',
+  shortName: 'ஸ்ரீ கணேஷ் (SGPH)',
+  nameLine1: 'ஸ்ரீ கணேஷ்',
+  nameLine2: 'பிளைவுட் & ஹார்ட்வேர்',
+  nameEn: 'Sri Ganesh Plywood & Hardwares',
+  nameTa: 'ஸ்ரீ கணேஷ் பிளைவுட் & ஹார்ட்வேர்',
   logo: '/assets/aistudio/Glossy_SGPH_Global_Globe_Logo_d3a0e4c9.png',
   established: '1998',
   contactPerson: 'K. Kalimuthu',
+  contactPersonTa: 'கே. காளிமுத்து',
+  contactPersonEn: 'K. Kalimuthu',
   phoneDisplay: '+91 75981 14626',
   phoneRaw: '75981 14626',
   phoneHref: 'tel:+917598114626',

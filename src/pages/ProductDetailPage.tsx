@@ -33,9 +33,9 @@ export function ProductDetailPage() {
   return (
     <PageTransition>
       {/* Top Breadcrumb Bar */}
-      <section className="bg-[#EAF1FA] border-b border-[#D4DFEE] wood-grain-surface py-5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm text-[#485A72]">
+      <section className="bg-[#EAF1FA] border-b border-[#D4DFEE] wood-grain-surface py-3 sm:py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-2 sm:gap-4">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-[#485A72]">
             <Link to="/" className="hover:text-[#0E4DA4] transition-colors">
               Home
             </Link>
@@ -51,28 +51,29 @@ export function ProductDetailPage() {
               {product.group}
             </Link>
             <span aria-hidden="true">/</span>
-            <span className="text-[#0B1D3A] font-medium">{product.name}</span>
+            <span className="text-[#0B1D3A] font-medium truncate max-w-[150px] sm:max-w-none">{product.name}</span>
           </nav>
 
           <Link
             to={`/products?category=${encodeURIComponent(product.group)}`}
             className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#0E4DA4] hover:text-[#093678] transition-colors whitespace-nowrap"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>Back to {product.group}</span>
           </Link>
         </div>
       </section>
 
       {/* Main Product Details Module */}
-      <section className="py-12 lg:py-16 bg-[#F6F9FC]">
+      <section className="py-6 sm:py-12 lg:py-16 bg-[#F6F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
             {/* Left Gallery Frame */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.12 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="lg:col-span-6 space-y-5 lg:sticky lg:top-24"
             >
               <div className="rounded-2xl bg-white border-2 border-[#B5CBE6] p-3 shadow-[0_4px_20px_rgba(11,29,58,0.05)]">
@@ -94,17 +95,17 @@ export function ProductDetailPage() {
 
               {/* Showroom Assurances */}
               <div className="grid grid-cols-3 gap-3">
-                <div className="p-3.5 rounded-xl bg-white border border-[#D4DFEE] text-center">
-                  <ShieldCheck className="w-4 h-4 text-[#0E4DA4] mx-auto mb-1.5" />
-                  <p className="text-xs font-medium text-[#0B1D3A]">Genuine Stock</p>
+                <div className="p-3.5 rounded-xl bg-white border border-[#D4DFEE] text-center shadow-xs">
+                  <ShieldCheck className="w-4 h-4 text-[#16803C] mx-auto mb-1.5" />
+                  <p className="text-xs font-semibold text-[#0B1D3A]">Genuine Stock</p>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white border border-[#D4DFEE] text-center">
+                <div className="p-3.5 rounded-xl bg-white border border-[#D4DFEE] text-center shadow-xs">
                   <Layers className="w-4 h-4 text-[#0E4DA4] mx-auto mb-1.5" />
-                  <p className="text-xs font-medium text-[#0B1D3A]">Samples Ready</p>
+                  <p className="text-xs font-semibold text-[#0B1D3A]">Samples Ready</p>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white border border-[#D4DFEE] text-center">
-                  <Truck className="w-4 h-4 text-[#0E4DA4] mx-auto mb-1.5" />
-                  <p className="text-xs font-medium text-[#0B1D3A]">Site Delivery</p>
+                <div className="p-3.5 rounded-xl bg-white border border-[#D4DFEE] text-center shadow-xs">
+                  <Truck className="w-4 h-4 text-[#D61F26] mx-auto mb-1.5" />
+                  <p className="text-xs font-semibold text-[#0B1D3A]">Site Delivery</p>
                 </div>
               </div>
             </motion.div>
@@ -112,8 +113,9 @@ export function ProductDetailPage() {
             {/* Right Technical Details & Enquiry Module */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.48, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.12 }}
+              transition={{ duration: 0.48, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="lg:col-span-6 bg-white rounded-2xl border border-[#D4DFEE] p-6 sm:p-8 lg:p-9"
             >
               <div className="flex flex-wrap items-center gap-2 text-xs text-[#0E4DA4] font-medium mb-2">
@@ -208,7 +210,13 @@ export function ProductDetailPage() {
       {relatedProducts.length > 0 && (
         <section className="py-14 lg:py-18 bg-white border-t border-[#D4DFEE]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-end justify-between gap-4 mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.12 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-end justify-between gap-4 mb-8"
+            >
               <div>
                 <p className="text-sm font-medium text-[#0E4DA4] mb-1">
                   More in {product.group}
@@ -224,9 +232,9 @@ export function ProductDetailPage() {
                 <span>View All</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6 lg:gap-7">
               {relatedProducts.map((item, idx) => (
                 <ProductCard key={item.id} product={item} index={idx} />
               ))}

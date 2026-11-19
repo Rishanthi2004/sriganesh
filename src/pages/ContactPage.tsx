@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { PRODUCTS, STORE_INFO } from '../data/catalog';
 import { PageTransition } from '../components/PageTransition';
+import { useLanguage } from '../context/LanguageContext';
 
 interface EnquiryFormState {
   name: string;
@@ -25,6 +26,7 @@ interface EnquiryFormState {
 }
 
 export function ContactPage() {
+  const { language, t } = useLanguage();
   const [searchParams] = useSearchParams();
   const preselectedProduct = searchParams.get('product') || '';
 
@@ -80,21 +82,22 @@ export function ContactPage() {
   return (
     <PageTransition>
       {/* Page Header */}
-      <section className="bg-[#EAF1FA] border-b border-[#D4DFEE] wood-grain-surface py-14 lg:py-18">
+      <section className="bg-[#EAF1FA] border-b border-[#D4DFEE] wood-grain-surface py-8 sm:py-12 lg:py-18">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.12 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl"
           >
-            <p className="text-sm font-medium text-[#0E4DA4] mb-2">
+            <p className="text-xs sm:text-sm font-medium text-[#0E4DA4] mb-1 sm:mb-2">
               {STORE_INFO.fullName}
             </p>
-            <h1 className="font-serif text-3xl sm:text-5xl font-semibold text-[#0B1D3A] tracking-tight leading-[1.12] mb-4 [text-wrap:balance]">
+            <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-semibold text-[#0B1D3A] tracking-tight leading-[1.15] mb-2 sm:mb-4 [text-wrap:balance]">
               Visit Our Namakkal Showrooms or Send an Enquiry
             </h1>
-            <p className="text-base text-[#485A72] leading-relaxed">
+            <p className="text-xs sm:text-base text-[#485A72] leading-relaxed">
               Reach our Head Office on Mohanur Main Road or our Branch Office at Vangili Complex,
               Trichy Road. Call directly, message on WhatsApp, or submit your material list below.
             </p>
@@ -103,18 +106,19 @@ export function ContactPage() {
       </section>
 
       {/* Main Two-Column Contact Section */}
-      <section className="py-12 lg:py-18 bg-[#F6F9FC]">
+      <section className="py-6 sm:py-12 lg:py-18 bg-[#F6F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-10 items-start">
             {/* Left Column: Direct Contact, Head Office & Branch Office */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5 space-y-6"
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.12 }}
+              transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-5 space-y-4 sm:space-y-6"
             >
               {/* Primary Contact Desk Card */}
-              <div className="bg-white rounded-xl border border-[#D4DFEE] p-6 sm:p-7 space-y-5">
+              <div className="bg-white rounded-xl border border-[#D4DFEE] p-4 sm:p-7 space-y-4 sm:space-y-5">
                 <h2 className="font-serif text-xl font-semibold text-[#0B1D3A]">
                   Direct Contact Details
                 </h2>
@@ -123,20 +127,22 @@ export function ContactPage() {
                   <div className="flex items-start gap-3.5">
                     <User className="w-5 h-5 text-[#0E4DA4] mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-medium text-[#0B1D3A]">Contact Person</p>
-                      <p className="text-[#485A72] mt-0.5">{STORE_INFO.contactPerson}</p>
+                      <p className="font-medium text-[#0B1D3A]">
+                        {language === 'ta' ? 'தொடர்புக்கு' : 'Contact Person'}
+                      </p>
+                      <p className="text-[#485A72] mt-0.5">{t('founderName')}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3.5">
-                    <Phone className="w-5 h-5 text-[#0E4DA4] mt-0.5 shrink-0" />
+                    <Phone className="w-5 h-5 text-[#16803C] mt-0.5 shrink-0" />
                     <div className="space-y-1">
                       <p className="font-medium text-[#0B1D3A]">Phone Numbers</p>
                       <p className="text-[#485A72] tabular-nums">
                         Primary:{' '}
                         <a
                           href={STORE_INFO.phoneHref}
-                          className="font-medium text-[#0B1D3A] hover:text-[#0E4DA4] transition-colors"
+                          className="font-medium text-[#0B1D3A] hover:text-[#16803C] transition-colors"
                         >
                           {STORE_INFO.phoneRaw}
                         </a>
@@ -154,7 +160,7 @@ export function ContactPage() {
                         Branch Office:{' '}
                         <a
                           href={STORE_INFO.branchOffice.phoneHref}
-                          className="font-medium text-[#0B1D3A] hover:text-[#0E4DA4] transition-colors"
+                          className="font-medium text-[#0B1D3A] hover:text-[#D61F26] transition-colors"
                         >
                           {STORE_INFO.branchOffice.phoneRaw}
                         </a>
@@ -163,12 +169,12 @@ export function ContactPage() {
                   </div>
 
                   <div className="flex items-start gap-3.5">
-                    <Mail className="w-5 h-5 text-[#0E4DA4] mt-0.5 shrink-0" />
+                    <Mail className="w-5 h-5 text-[#D61F26] mt-0.5 shrink-0" />
                     <div>
                       <p className="font-medium text-[#0B1D3A]">Email</p>
                       <a
                         href={`mailto:${STORE_INFO.email}`}
-                        className="text-[#485A72] hover:text-[#0E4DA4] transition-colors mt-0.5 inline-block break-all"
+                        className="text-[#485A72] hover:text-[#D61F26] transition-colors mt-0.5 inline-block break-all"
                       >
                         {STORE_INFO.email}
                       </a>
@@ -254,8 +260,9 @@ export function ContactPage() {
             {/* Right Column: Contact Enquiry Form + Namakkal Map Preview */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.12 }}
+              transition={{ duration: 0.45, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
               className="lg:col-span-7 space-y-6"
             >
               <div className="bg-white rounded-xl border border-[#D4DFEE] p-6 sm:p-9">
