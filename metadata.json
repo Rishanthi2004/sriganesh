@@ -1,0 +1,6 @@
+{
+  "name": "Timber & Ply Co. — Plywood & Hardware Store",
+  "description": "Quality plywood, decorative laminates, flush doors, and architectural hardware built to last.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

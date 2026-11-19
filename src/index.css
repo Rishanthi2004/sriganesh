@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --color-canvas: #F6F9FC;
+  --color-surface-tint: #EAF1FA;
+  --color-border-line: #D4DFEE;
+  --color-brand-blue: #0E4DA4;
+  --color-brand-blue-dark: #093678;
+  --color-brand-sky: #4B91E2;
+  --color-brand-red: #D61F26;
+  --color-brand-green: #16803C;
+  --color-navy: #0B1D3A;
+  --color-navy-soft: #142B52;
+  --color-ink-muted: #485A72;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    color: var(--color-navy);
+    background-color: var(--color-canvas);
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-blue);
+    outline-offset: 2px;
+  }
+}
+
+/* Subtle architectural surface texture aligned with SGPH blue-white palette */
+.wood-grain-surface {
+  background-image:
+    repeating-linear-gradient(
+      92deg,
+      rgba(14, 77, 164, 0.024) 0px,
+      rgba(14, 77, 164, 0.024) 1px,
+      transparent 1px,
+      transparent 16px
+    ),
+    repeating-linear-gradient(
+      88deg,
+      rgba(11, 29, 58, 0.016) 0px,
+      rgba(11, 29, 58, 0.016) 1px,
+      transparent 1px,
+      transparent 26px
+    );
+}
+
+.wood-grain-dark {
+  background-image:
+    repeating-linear-gradient(
+      91deg,
+      rgba(246, 249, 252, 0.032) 0px,
+      rgba(246, 249, 252, 0.032) 1px,
+      transparent 1px,
+      transparent 18px
+    ),
+    repeating-linear-gradient(
+      89deg,
+      rgba(75, 145, 226, 0.045) 0px,
+      rgba(75, 145, 226, 0.045) 1px,
+      transparent 1px,
+      transparent 29px
+    );
+}
+
+/* Gentle continuous drift for hero photography */
+@keyframes heroSlowZoom {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.06) translate3d(-0.6%, -0.4%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.animate-hero-drift {
+  animation: heroSlowZoom 24s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes brandMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.brand-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: brandMarquee 36s linear infinite;
+  will-change: transform;
+}
+
+.brand-marquee-container:hover .brand-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-drift {
+    animation: none;
+  }
+  .brand-marquee-track {
+    animation: none;
+  }
+}
