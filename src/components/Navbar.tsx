@@ -71,12 +71,12 @@ export function Navbar() {
           onClick={() => setMobileOpen(false)}
           className="inline-flex items-center gap-1.5 sm:gap-3 text-[#0B1D3A] hover:text-[#0E4DA4] transition-colors shrink-0 group py-1 select-none"
         >
-          <span className="inline-flex items-center justify-center bg-white rounded-lg p-0.5 border border-[#D4DFEE] shadow-2xs group-hover:border-[#0E4DA4] transition-colors shrink-0">
+          <span className="inline-flex items-center justify-center bg-white rounded-lg p-0.5 sm:p-1 border border-[#D4DFEE] shadow-2xs group-hover:border-[#0E4DA4] transition-colors shrink-0">
             <img
               src={STORE_INFO.logo}
               alt={`${STORE_INFO.fullName} logo`}
               referrerPolicy="no-referrer"
-              className="h-8 sm:h-10 lg:h-11 w-auto object-contain shrink-0"
+              className="h-9 sm:h-11 lg:h-12 w-auto object-contain shrink-0"
             />
           </span>
           <div className="flex flex-col text-left leading-none justify-center shrink-0">

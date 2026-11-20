@@ -69,8 +69,8 @@ const BRAND_LOGOS: Record<
 export function BrandLogo({ brandId, compact = false }: BrandLogoProps) {
   const logo = BRAND_LOGOS[brandId];
   const heightClass = compact
-    ? 'max-h-7 sm:max-h-8 max-w-[130px]'
-    : 'max-h-11 sm:max-h-12 max-w-[170px]';
+    ? 'h-11 sm:h-12 max-h-12 sm:max-h-13 max-w-[165px] sm:max-w-[185px]'
+    : 'h-13 sm:h-15 max-h-15 sm:max-h-16 max-w-[180px] sm:max-w-[210px]';
 
   if (!logo) {
     return (
@@ -82,8 +82,8 @@ export function BrandLogo({ brandId, compact = false }: BrandLogoProps) {
 
   return (
     <div
-      className={`inline-flex items-center justify-center ${
-        compact ? 'h-9 px-1' : 'h-14 px-2'
+      className={`inline-flex items-center justify-center w-full ${
+        compact ? 'h-12 sm:h-14 px-1.5' : 'h-14 sm:h-16 px-2'
       }`}
       aria-label={logo.alt}
     >
