@@ -236,14 +236,14 @@ export function ContactPage() {
                       <span className="truncate">{office.landmark}</span>
                     </div>
 
-                    {/* Interactive Map Preview with Touch for Directions */}
+                    {/* Interactive Compact Map Preview with Touch for Directions */}
                     <div className="pt-1">
                       <div className="relative rounded-lg overflow-hidden border border-[#D4DFEE] bg-[#EAF1FA] group">
                         <a
                           href={office.directionsUrl || office.mapsUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block relative w-full h-44 sm:h-52 cursor-pointer"
+                          className="block relative w-full h-28 sm:h-32 cursor-pointer"
                           aria-label={`Open Google Maps directions to ${office.label}`}
                           title={`Touch map for directions to ${office.label}`}
                         >
@@ -254,25 +254,17 @@ export function ContactPage() {
                             loading="lazy"
                           />
                           {/* Visual overlay prompting touch for direction */}
-                          <div className="absolute inset-0 bg-[#0B1D3A]/10 group-hover:bg-[#0B1D3A]/25 transition-colors flex flex-col justify-between p-3 pointer-events-none">
-                            <div className="flex items-center justify-between gap-2">
-                              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold text-white bg-[#0B1D3A]/90 backdrop-blur-xs shadow-xs">
-                                <MapPin className="w-3.5 h-3.5 text-[#16803C]" />
-                                <span>{office.label}</span>
+                          <div className="absolute inset-0 bg-[#0B1D3A]/10 group-hover:bg-[#0B1D3A]/25 transition-colors flex items-end justify-between p-2 sm:p-2.5 pointer-events-none">
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-semibold text-white bg-[#0B1D3A]/90 backdrop-blur-xs shadow-xs">
+                              <MapPin className="w-3 h-3 text-[#16803C]" />
+                              <span>{office.label}</span>
+                            </span>
+                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[10px] sm:text-[11px] font-semibold text-white bg-[#0E4DA4] shadow-xs group-hover:scale-105 transition-transform">
+                              <Navigation className="w-3 h-3 text-white" />
+                              <span>
+                                {language === 'ta' ? 'மேப் தொடவும்' : 'Touch for Directions'}
                               </span>
-                              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-semibold text-white bg-[#0E4DA4] shadow-xs">
-                                <span>Directions</span>
-                                <Navigation className="w-3 h-3 text-white" />
-                              </span>
-                            </div>
-                            <div className="text-center">
-                              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-[#0E4DA4] shadow-md group-hover:scale-105 transition-transform">
-                                <Navigation className="w-3.5 h-3.5 text-white" />
-                                <span>
-                                  {language === 'ta' ? 'மேப் தொடவும் (Directions)' : 'Touch Map for Directions'}
-                                </span>
-                              </span>
-                            </div>
+                            </span>
                           </div>
                         </a>
                       </div>
