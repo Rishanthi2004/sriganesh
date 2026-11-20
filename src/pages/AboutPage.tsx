@@ -87,7 +87,7 @@ export function AboutPage() {
       `👤 *${founderTitle}* (${designation})\n` +
       `🏢 *Company:* ${STORE_INFO.fullName}\n` +
       `📅 *Established:* 1998\n` +
-      `📍 *Location:* 73, Mohanur Main Road, Near Iyappan Kovil, Namakkal – 637001\n` +
+      `📍 *Location:* 73, Mohanur Main Road, Near Iyappan Kovil, Namakkal, Tamil Nadu, All Over India\n` +
       `📞 *Phone:* ${STORE_INFO.phoneDisplay} / ${STORE_INFO.headOffice.phoneDisplay}\n` +
       `✉️ *Email:* ${STORE_INFO.email}\n` +
       `🌐 *Website:* ${window.location.origin}/about\n\n` +
@@ -103,7 +103,7 @@ export function AboutPage() {
       `Designation: ${designation}\n` +
       `Company: ${STORE_INFO.fullName}\n` +
       `Established: 1998\n` +
-      `Location: Namakkal, Tamil Nadu, India\n` +
+      `Location: Namakkal, Tamil Nadu, All Over India\n` +
       `Phone: ${STORE_INFO.phoneDisplay} / ${STORE_INFO.headOffice.phoneDisplay}\n` +
       `Email: ${STORE_INFO.email}\n` +
       `Address: 73, Mohanur Main Road, Near Iyappan Kovil, Namakkal – 637001\n` +
