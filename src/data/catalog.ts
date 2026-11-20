@@ -95,17 +95,18 @@ export const STORE_INFO = {
     label: 'Branch Office',
     addressLines: [
       '6/315, Vangili Complex,',
+      'Near Andavar Petrol Bunk,',
       'Trichy Road,',
       'Namakkal – 637001,',
       'Tamil Nadu, India.',
     ],
-    shortAddress: '6/315, Vangili Complex, Trichy Road, Namakkal – 637001',
-    landmark: 'Vangili Complex, Trichy Road',
+    shortAddress: '6/315, Vangili Complex, Near Andavar Petrol Bunk, Trichy Road, Namakkal – 637001',
+    landmark: 'Near Andavar Petrol Bunk, Trichy Road',
     phoneDisplay: '+91 93443 84640',
     phoneRaw: '93443 84640',
     phoneHref: 'tel:+919344384640',
     mapsUrl:
-      'https://www.google.com/maps/search/?api=1&query=Vangili+Complex+Trichy+Road+Namakkal+637001+Tamil+Nadu',
+      'https://www.google.com/maps/search/?api=1&query=Vangili+Complex+Near+Andavar+Petrol+Bunk+Trichy+Road+Namakkal+637001+Tamil+Nadu',
   },
 };
 

@@ -99,7 +99,7 @@ export function ContactPage() {
             </h1>
             <p className="text-xs sm:text-base text-[#485A72] leading-relaxed">
               Reach our Head Office on Mohanur Main Road or our Branch Office at Vangili Complex,
-              Trichy Road. Call directly, message on WhatsApp, or submit your material list below.
+              Near Andavar Petrol Bunk, Trichy Road. Call directly, message on WhatsApp, or submit your material list below.
             </p>
           </motion.div>
         </div>
@@ -502,7 +502,7 @@ export function ContactPage() {
                           SGPH Branch Office
                         </p>
                         <p className="text-xs text-[#485A72] mt-0.5">
-                          Vangili Complex, Trichy Road, Namakkal
+                          Vangili Complex, Near Andavar Petrol Bunk, Trichy Road, Namakkal
                         </p>
                       </div>
                     </div>
