@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, Layers, Truck, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Layers, Truck, ChevronLeft, ChevronRight, Instagram } from 'lucide-react';
 import {
   PRODUCTS,
   HOME_CATEGORIES,
@@ -106,26 +106,62 @@ export function HomePage() {
   return (
     <PageTransition>
       {/* 1. Architectural Hero Section */}
-      <section className="relative min-h-[380px] sm:min-h-[480px] lg:min-h-[560px] flex items-center overflow-hidden bg-black">
-        {/* Crisp Native Video - No old images or poster */}
+      <section className="relative min-h-[420px] sm:min-h-[480px] lg:min-h-[560px] flex items-center overflow-hidden bg-black">
+        {/* Crisp Dual Native Videos Side by Side with Equal Dimensions & Spacing */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0"
         >
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="w-full h-full object-cover"
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
-          {/* Subtle bottom transition fade only */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+          {/* Dual Videos Side-by-Side: Equal Dimensions with Proper Spacing */}
+          <div className="w-full h-full grid grid-cols-2 gap-2 sm:gap-4 lg:gap-6 p-2 sm:p-4 lg:p-6">
+            {/* Left Video: Existing video moved slightly to the left */}
+            <div className="relative w-full h-full overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 shadow-2xl bg-black/60 group">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover object-left sm:object-center transform -translate-x-1 sm:-translate-x-2.5 transition-transform duration-500 group-hover:scale-105"
+              >
+                <source src="/hero-video.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-black/35 pointer-events-none" />
+            </div>
+
+            {/* Right Video: Instagram Video maintaining equal size and dimensions */}
+            <div className="relative w-full h-full overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 shadow-2xl bg-black/60 group">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              >
+                <source src="/instagram-reel.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-black/35 pointer-events-none" />
+
+              {/* Instagram Reel Direct Link Badge */}
+              <a
+                href="https://www.instagram.com/reels/Df4ZvHLSdnn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-medium text-white bg-black/70 hover:bg-black/90 backdrop-blur-md border border-white/20 transition-all shadow-md active:scale-95"
+                title="View on Instagram"
+              >
+                <Instagram className="w-3 h-3 text-[#E1306C]" />
+                <span className="hidden sm:inline">Instagram Reel</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Subtle bottom transition fade and vignette for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/25 pointer-events-none" />
         </motion.div>
 
         {/* Minimal Hero Copy & Compact CTAs */}
