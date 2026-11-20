@@ -69,8 +69,8 @@ const BRAND_LOGOS: Record<
 export function BrandLogo({ brandId, compact = false }: BrandLogoProps) {
   const logo = BRAND_LOGOS[brandId];
   const heightClass = compact
-    ? 'h-8 sm:h-9 max-h-9 sm:max-h-10 max-w-[140px] sm:max-w-[160px]'
-    : 'h-11 sm:h-12 max-h-12 sm:max-h-14 max-w-[170px] sm:max-w-[190px]';
+    ? 'h-9 sm:h-10 max-h-10 sm:max-h-12 max-w-[165px] sm:max-w-[190px]'
+    : 'h-12 sm:h-14 max-h-14 sm:max-h-16 max-w-[190px] sm:max-w-[220px]';
 
   if (!logo) {
     return (

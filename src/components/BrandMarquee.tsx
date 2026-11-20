@@ -52,7 +52,7 @@ export function BrandMarquee() {
                   key={`${loopIndex}-${brand.id}`}
                   to="/brands"
                   tabIndex={loopIndex === 1 ? -1 : 0}
-                  className="group flex items-center justify-center min-w-[160px] sm:min-w-[180px] h-[60px] sm:h-[68px] px-3.5 sm:px-4 bg-white rounded-xl border border-[#D4DFEE] shadow-[0_2px_8px_rgba(11,29,58,0.03)] hover:border-[#0E4DA4]/50 hover:shadow-[0_8px_20px_rgba(11,29,58,0.08)] hover:-translate-y-0.5 transition-all duration-200 shrink-0"
+                  className="group flex items-center justify-center min-w-[175px] sm:min-w-[205px] h-[66px] sm:h-[74px] px-4 sm:px-5 bg-white rounded-xl border border-[#D4DFEE] shadow-[0_2px_8px_rgba(11,29,58,0.03)] hover:border-[#0E4DA4]/50 hover:shadow-[0_8px_20px_rgba(11,29,58,0.08)] hover:-translate-y-0.5 transition-all duration-200 shrink-0"
                 >
                   <BrandLogo brandId={brand.id} compact />
                 </Link>

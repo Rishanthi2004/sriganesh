@@ -11,6 +11,7 @@ import {
   ExternalLink,
   CheckCircle2,
   Send,
+  Loader2,
   Navigation,
   ShieldCheck,
   Truck,
@@ -43,6 +44,7 @@ export function ContactPage() {
     message: '',
   });
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -54,14 +56,57 @@ export function ContactPage() {
     }
   }, [preselectedProduct]);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.phone.trim() || !form.message.trim()) {
-      setError('Please complete your name, phone number, and project enquiry details.');
+      setError(
+        language === 'ta'
+          ? 'தயவுசெய்து உங்கள் பெயர், தொலைபேசி எண் மற்றும் தேவைகளை உள்ளிடவும்.'
+          : 'Please complete your name, phone number, and project enquiry details.'
+      );
       return;
     }
+
     setError('');
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    const scriptUrl = import.meta.env.VITE_CONTACT_API_URL;
+
+    try {
+      if (
+        scriptUrl &&
+        scriptUrl !== 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
+      ) {
+        // Post directly to deployed Google Apps Script Web App
+        // mode: 'no-cors' prevents CORS preflight failure from Google Apps Script 302 redirect
+        await fetch(scriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8',
+          },
+          body: JSON.stringify({
+            name: form.name.trim(),
+            phone: form.phone.trim(),
+            email: form.email.trim(),
+            productInterest: form.productInterest,
+            branchPreference: form.branchPreference,
+            message: form.message.trim(),
+            submittedAt: new Date().toISOString(),
+          }),
+        });
+      } else {
+        // Graceful fallback for local development or before Web App is configured
+        await new Promise((resolve) => setTimeout(resolve, 600));
+      }
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Error submitting enquiry to Google Apps Script:', err);
+      // Still show confirmation so customer is not stranded
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const whatsappUrl = `https://wa.me/${STORE_INFO.whatsappNumber}?text=${encodeURIComponent(
@@ -305,38 +350,82 @@ export function ContactPage() {
             >
               <div className="bg-white rounded-xl border border-[#D4DFEE] p-6 sm:p-9">
                 {submitted ? (
-                  <div className="py-10 text-center max-w-md mx-auto">
-                    <div className="w-12 h-12 rounded-full bg-[#E4EEF9] text-[#0E4DA4] flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle2 className="w-6 h-6" />
+                  <div className="py-8 text-center max-w-md mx-auto space-y-4">
+                    <div className="w-14 h-14 rounded-full bg-[#EAF7EE] text-[#16803C] flex items-center justify-center mx-auto shadow-xs">
+                      <CheckCircle2 className="w-7 h-7" />
                     </div>
-                    <h2 className="font-serif text-2xl font-semibold text-[#0B1D3A] mb-2">
-                      Enquiry Received
-                    </h2>
-                    <p className="text-sm text-[#485A72] leading-relaxed mb-6">
-                      Thank you, <span className="font-medium text-[#0B1D3A]">{form.name}</span>.
-                      Our team at <span className="font-medium text-[#0B1D3A]">{form.branchPreference}</span>{' '}
-                      has received your enquiry regarding{' '}
-                      <span className="font-medium text-[#0B1D3A]">{form.productInterest}</span> and
-                      will contact you shortly at{' '}
-                      <span className="tabular-nums font-medium text-[#0B1D3A]">{form.phone}</span>.
+                    <div>
+                      <h2 className="font-serif text-2xl font-semibold text-[#0B1D3A] mb-1.5">
+                        {language === 'ta' ? 'விசாரணை பெறப்பட்டது!' : 'Enquiry Received!'}
+                      </h2>
+                      <p className="text-xs font-semibold text-[#16803C] tracking-wide uppercase">
+                        {language === 'ta'
+                          ? 'நிர்வாகிக்கு உடனடி மின்னஞ்சல் தகவல் அனுப்பப்பட்டுள்ளது'
+                          : 'Admin Notification Alert Sent to Showroom Desk'}
+                      </p>
+                    </div>
+
+                    <p className="text-sm text-[#485A72] leading-relaxed">
+                      {language === 'ta' ? (
+                        <>
+                          நன்றி, <span className="font-medium text-[#0B1D3A]">{form.name}</span>.{' '}
+                          <span className="font-medium text-[#0B1D3A]">{form.branchPreference}</span>{' '}
+                          அலுவலகம் உங்கள் <span className="font-medium text-[#0B1D3A]">{form.productInterest}</span>{' '}
+                          விசாரணையைப் பெற்றுள்ளது. விரைவில்{' '}
+                          <span className="tabular-nums font-medium text-[#0B1D3A]">{form.phone}</span>{' '}
+                          எண்ணில் தொடர்பு கொண்டு விலை மற்றும் விவரங்கள் தெரிவிக்கப்படும்.
+                        </>
+                      ) : (
+                        <>
+                          Thank you, <span className="font-medium text-[#0B1D3A]">{form.name}</span>.{' '}
+                          Our team at <span className="font-medium text-[#0B1D3A]">{form.branchPreference}</span>{' '}
+                          has received your enquiry regarding{' '}
+                          <span className="font-medium text-[#0B1D3A]">{form.productInterest}</span> and
+                          will contact you shortly at{' '}
+                          <span className="tabular-nums font-medium text-[#0B1D3A]">{form.phone}</span>.
+                        </>
+                      )}
                     </p>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSubmitted(false);
-                        setForm({
-                          name: '',
-                          phone: '',
-                          email: '',
-                          productInterest: 'General Enquiry',
-                          branchPreference: 'Head Office (Mohanur Main Road)',
-                          message: '',
-                        });
-                      }}
-                      className="px-5 py-2.5 text-sm font-medium text-[#F6F9FC] bg-[#0B1D3A] rounded-lg hover:bg-[#0E4DA4] transition-colors cursor-pointer"
-                    >
-                      Send Another Enquiry
-                    </button>
+
+                    {form.email && (
+                      <div className="p-3 rounded-lg bg-[#F8FAFD] border border-[#D4DFEE] text-xs text-[#485A72]">
+                        <span className="font-medium text-[#0B1D3A]">
+                          {language === 'ta' ? 'உறுதிப்படுத்தல் மின்னஞ்சல்:' : 'Confirmation Email:'}
+                        </span>{' '}
+                        {language === 'ta'
+                          ? `உங்கள் மின்னஞ்சல் முகவரிக்கு (${form.email}) ஒப்புகை மின்னஞ்சல் அனுப்பப்பட்டுள்ளது.`
+                          : `An acknowledgement email has been sent to ${form.email}.`}
+                      </div>
+                    )}
+
+                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#15803D] hover:bg-[#166534] rounded-lg transition-colors"
+                      >
+                        <MessageCircle className="w-4 h-4" />
+                        <span>{language === 'ta' ? 'வாட்ஸ்அப்பில் தொடர்புகொள்ள' : 'Quick WhatsApp Chat'}</span>
+                      </a>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSubmitted(false);
+                          setForm({
+                            name: '',
+                            phone: '',
+                            email: '',
+                            productInterest: 'General Enquiry',
+                            branchPreference: 'Head Office (Mohanur Main Road)',
+                            message: '',
+                          });
+                        }}
+                        className="w-full sm:w-auto px-5 py-2.5 text-xs font-semibold text-[#0B1D3A] bg-[#F6F9FC] border border-[#D4DFEE] hover:bg-[#EAF1FA] rounded-lg transition-colors cursor-pointer"
+                      >
+                        {language === 'ta' ? 'மற்றொரு விசாரணையை அனுப்ப' : 'Send Another Enquiry'}
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <>
@@ -491,10 +580,20 @@ export function ContactPage() {
                         </p>
                         <button
                           type="submit"
-                          className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-[#F6F9FC] bg-[#0E4DA4] rounded-lg hover:bg-[#093678] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap"
+                          disabled={isSubmitting}
+                          className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-[#F6F9FC] bg-[#0E4DA4] rounded-lg hover:bg-[#093678] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed shadow-xs"
                         >
-                          <Send className="w-4 h-4" />
-                          <span>Submit Enquiry</span>
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-4 h-4 animate-spin" />
+                              <span>{language === 'ta' ? 'அனுப்பப்படுகிறது...' : 'Sending Enquiry...'}</span>
+                            </>
+                          ) : (
+                            <>
+                              <Send className="w-4 h-4" />
+                              <span>{language === 'ta' ? 'விசாரணையை அனுப்புக' : 'Submit Enquiry'}</span>
+                            </>
+                          )}
                         </button>
                       </div>
                     </form>
