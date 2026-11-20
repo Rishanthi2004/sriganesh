@@ -130,9 +130,9 @@ export const HOME_CATEGORIES: HomeCategoryItem[] = [
   {
     id: 'Paints',
     title: 'Paints',
-    subtitle: 'Wall Coatings & Wood Finishes',
+    subtitle: 'Interior & Exterior Wall Finishes',
     description:
-      'Matte interior and weatherproof exterior emulsions, PU wood polishes, clear sealers, and architectural primers.',
+      'Matte interior and weatherproof exterior emulsions, waterproofing coatings, clear sealers, and architectural primers.',
     image: '/src/assets/images/showcase_paints_primers_1795079456121.jpg',
   },
   {
@@ -430,26 +430,6 @@ export const PRODUCTS: ProductItem[] = [
       { label: 'Formulation', value: 'Low-VOC, Washable, Anti-Fungal Protection' },
     ],
     brands: ['Asian Paints', 'Birla Opus', 'Nippon Paint'],
-  },
-  {
-    id: 'wood-polishes-pu-finishes',
-    slug: 'wood-polishes-pu-finishes',
-    name: 'Wood Polishes & PU',
-    group: 'Paints',
-    shortDescription: 'Clear PU coatings, melamine & wood stains.',
-    fullDescription:
-      'Bring out the natural depth of decorative wooden sheets, flush doors, and bespoke furniture with non-yellowing polyurethane (PU) topcoats, hand-rubbed satin waxes, and fast-drying melamine finishes.',
-    image: '/src/assets/images/prod_wood_polish_1795078366862.jpg',
-    featured: true,
-    standardSizes: '500 ml, 1 L & 4 L Sets',
-    applications: ['Natural Wood Veneers', 'Main Teak Doors', 'Dining Tables & Cabinetry', 'Exterior Timber'],
-    specs: [
-      { label: 'Systems', value: '2K Italian PU (Interior/Exterior), Melamine, Natural Wax Oil' },
-      { label: 'Sheen Levels', value: 'Dead Matte (10%), Satin (30%), High Gloss (90%)' },
-      { label: 'Durability', value: 'Scratch, Water-Ring & UV Yellowing Resistant' },
-      { label: 'Stains', value: 'Walnut, Burma Teak, Smoked Oak, Wenge & Natural' },
-    ],
-    brands: ['Asian Paints WoodTech', 'Birla Opus', 'Nippon Paint'],
   },
   {
     id: 'primers-wood-sealers',
