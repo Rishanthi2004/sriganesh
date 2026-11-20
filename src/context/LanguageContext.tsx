@@ -60,7 +60,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     founderName: 'K. Kalimuthu',
     founderNameTa: 'கே. காளிமுத்து',
     founderDesignation: 'Founder & Managing Director',
-    founderBio: 'Founded Sri Ganesh Plywoods & Hardwares in 1998, establishing nearly three decades of trusted supply in authentic IS:710 marine plywoods, calibrated boards, and architectural hardwares across Namakkal, Tamil Nadu, and all over India.',
+    founderBio: 'Founded Sri Ganesh Plywoods & Hardwares in 1998, establishing nearly three decades of trusted supply in authentic IS:710 marine plywoods, calibrated boards, and architectural hardwares across Namakkal, Tamil Nadu, and All Over India.',
     founderExp: 'Years Experience',
     founderStock: 'Certified Stock',
     founderActive: 'Since 1998',
