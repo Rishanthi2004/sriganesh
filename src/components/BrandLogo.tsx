@@ -12,7 +12,7 @@ const BRAND_LOGOS: Record<
   }
 > = {
   fineply: {
-    src: '/assets/brands/fineply.jpg',
+    src: '/assets/brands/fineply.png',
     alt: 'Fineply NX',
   },
   greenply: {
@@ -20,7 +20,7 @@ const BRAND_LOGOS: Record<
     alt: 'Greenply Industries Limited',
   },
   centuryply: {
-    src: '/assets/brands/centuryply.jpg',
+    src: '/assets/brands/centuryply.png',
     alt: 'CenturyPly',
   },
   asianpaints: {
@@ -36,28 +36,28 @@ const BRAND_LOGOS: Record<
     alt: 'Nippon Paint',
   },
   ebco: {
-    src: '/assets/brands/ebco.jpg',
+    src: '/assets/brands/ebco.png',
     alt: 'Ebco',
     className: 'rounded-sm',
   },
   hafele: {
-    src: '/assets/brands/hafele.jpg',
+    src: '/assets/brands/hafele.png',
     alt: 'Häfele',
   },
   sleek: {
-    src: '/assets/brands/sleek.jpg',
+    src: '/assets/brands/sleek.png',
     alt: 'Sleek Kitchen Specialist',
   },
   godrej: {
-    src: '/assets/brands/godrej.jpg',
+    src: '/assets/brands/godrej.png',
     alt: 'Godrej',
   },
   greenlam: {
-    src: '/assets/brands/greenlam.jpg',
+    src: '/assets/brands/greenlam.png',
     alt: 'Greenlam Laminates',
   },
   'century-laminates': {
-    src: '/assets/brands/century-laminates.jpg',
+    src: '/assets/brands/century-laminates.png',
     alt: 'CenturyLaminates',
   },
   'myk-laticrete': {
@@ -69,8 +69,8 @@ const BRAND_LOGOS: Record<
 export function BrandLogo({ brandId, compact = false }: BrandLogoProps) {
   const logo = BRAND_LOGOS[brandId];
   const heightClass = compact
-    ? 'h-11 sm:h-12 max-h-12 sm:max-h-13 max-w-[165px] sm:max-w-[185px]'
-    : 'h-13 sm:h-15 max-h-15 sm:max-h-16 max-w-[180px] sm:max-w-[210px]';
+    ? 'h-8 sm:h-9 max-h-9 sm:max-h-10 max-w-[140px] sm:max-w-[160px]'
+    : 'h-11 sm:h-12 max-h-12 sm:max-h-14 max-w-[170px] sm:max-w-[190px]';
 
   if (!logo) {
     return (
@@ -82,16 +82,14 @@ export function BrandLogo({ brandId, compact = false }: BrandLogoProps) {
 
   return (
     <div
-      className={`inline-flex items-center justify-center w-full ${
-        compact ? 'h-12 sm:h-14 px-1.5' : 'h-14 sm:h-16 px-2'
-      }`}
+      className="inline-flex items-center justify-center w-full h-full px-1"
       aria-label={logo.alt}
     >
       <img
         src={logo.src}
         alt={logo.alt}
         loading="lazy"
-        className={`w-auto h-auto object-contain transition-transform duration-200 group-hover:scale-105 ${heightClass} ${
+        className={`w-auto object-contain transition-transform duration-200 group-hover:scale-105 ${heightClass} ${
           logo.className || ''
         }`}
       />
