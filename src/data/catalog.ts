@@ -89,7 +89,9 @@ export const STORE_INFO = {
     phoneRaw: '98426 84640',
     phoneHref: 'tel:+919842684640',
     mapsUrl:
-      'https://www.google.com/maps/search/?api=1&query=73+Mohanur+Main+Road+Near+Iyappan+Kovil+Namakkal+637001+Tamil+Nadu',
+      'https://www.google.com/maps/dir/?api=1&destination=73+Mohanur+Main+Road+Near+Iyappan+Kovil+Namakkal+637001+Tamil+Nadu',
+    directionsUrl:
+      'https://www.google.com/maps/dir/?api=1&destination=73+Mohanur+Main+Road+Near+Iyappan+Kovil+Namakkal+637001+Tamil+Nadu',
     embedUrl:
       'https://maps.google.com/maps?q=73+Mohanur+Main+Road+Near+Iyappan+Kovil+Namakkal+637001&t=&z=16&ie=UTF8&iwloc=&output=embed',
   },
@@ -108,7 +110,9 @@ export const STORE_INFO = {
     phoneRaw: '93443 84640',
     phoneHref: 'tel:+919344384640',
     mapsUrl:
-      'https://www.google.com/maps/search/?api=1&query=Vangili+Complex+Near+Andavar+Petrol+Bunk+Trichy+Road+Namakkal+637001+Tamil+Nadu',
+      'https://www.google.com/maps/dir/?api=1&destination=Vangili+Complex+Near+Andavar+Petrol+Bunk+Trichy+Road+Namakkal+637001+Tamil+Nadu',
+    directionsUrl:
+      'https://www.google.com/maps/dir/?api=1&destination=Vangili+Complex+Near+Andavar+Petrol+Bunk+Trichy+Road+Namakkal+637001+Tamil+Nadu',
     embedUrl:
       'https://maps.google.com/maps?q=Vangili+Complex+Near+Andavar+Petrol+Bunk+Trichy+Road+Namakkal+637001&t=&z=16&ie=UTF8&iwloc=&output=embed',
   },
