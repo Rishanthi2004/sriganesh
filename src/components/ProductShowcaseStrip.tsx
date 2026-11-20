@@ -60,7 +60,7 @@ export function ProductShowcaseStrip() {
       </motion.div>
 
       {/* Horizontal Swipe Carousel on Mobile / Multi-color Grid on Desktop */}
-      <div className="flex gap-3 overflow-x-auto pb-3 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:gap-4 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch]">
+      <div className="flex gap-3 overflow-x-auto pb-3 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 sm:gap-4 snap-x snap-mandatory scrollbar-none [scrollbar-width:none] [-webkit-overflow-scrolling:touch]">
         {PRODUCT_SHOWCASE_HIGHLIGHTS.map((item, index) => {
           const theme = SHOWCASE_THEMES[item.category] || SHOWCASE_THEMES.Plywood;
           return (

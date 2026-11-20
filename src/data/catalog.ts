@@ -168,6 +168,13 @@ export const PRODUCT_SHOWCASE_HIGHLIGHTS: ProductShowcaseItem[] = [
     category: 'Paints',
   },
   {
+    id: 'showcase-waterproofing',
+    title: 'Waterproofing Paints',
+    image: '/src/assets/images/prod_paints_1795078371102.jpg',
+    productSlug: 'waterproofing-paints',
+    category: 'Paints',
+  },
+  {
     id: 'showcase-locks',
     title: 'Door Locks & Fittings',
     image: '/src/assets/images/showcase_door_locks_fittings_1795079451898.jpg',
@@ -463,6 +470,26 @@ export const PRODUCTS: ProductItem[] = [
       { label: 'Tools Stocked', value: 'SS Putty Knives, Rollers, Masking Tapes & Abrasives' },
     ],
     brands: ['Asian Paints', 'Birla Opus', 'Nippon Paint', 'MYK Laticrete'],
+  },
+  {
+    id: 'waterproofing-paints',
+    slug: 'waterproofing-paints',
+    name: 'Waterproofing Paints',
+    group: 'Paints',
+    shortDescription: 'Damp-proof coatings, terrace sealers & crack-bridge paints.',
+    fullDescription:
+      'High-performance elastomeric waterproofing paints, crystalline damp-proof barrier coatings, and crack-bridging exterior emulsions formulated for terrace slabs, exterior vertical walls, parapets, and sunken bathrooms to permanently prevent moisture ingress, efflorescence, and damp patches.',
+    image: '/src/assets/images/prod_paints_1795078371102.jpg',
+    featured: true,
+    standardSizes: '1 L, 4 L, 10 L & 20 L Buckets',
+    applications: ['Roof Terraces & Parapet Walls', 'Exterior Rain-Facing Walls', 'Bathrooms & Sunken Slabs', 'Internal Wall Damp Patches'],
+    specs: [
+      { label: 'Membrane Type', value: 'High-Build Elastomeric Acrylic Waterproofing' },
+      { label: 'Elongation & Flexibility', value: '200% – 300% Crack-Bridging Flexibility' },
+      { label: 'Hydrostatic Resistance', value: 'Withstands up to 7 Bars of Positive Water Pressure' },
+      { label: 'Protection', value: 'Anti-Efflorescence, UV Reflective & Algae-Proof Finish' },
+    ],
+    brands: ['Asian Paints SmartCare', 'Dr. Fixit', 'Birla Opus', 'MYK Laticrete'],
   },
 ];
 
