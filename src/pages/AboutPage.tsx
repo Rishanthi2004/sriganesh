@@ -91,7 +91,7 @@ export function AboutPage() {
       `📞 *Phone:* ${STORE_INFO.phoneDisplay} / ${STORE_INFO.headOffice.phoneDisplay}\n` +
       `✉️ *Email:* ${STORE_INFO.email}\n` +
       `🌐 *Website:* ${window.location.origin}/about\n\n` +
-      `Quality Plywood, Reliable Hardware & Architectural Finishes.`;
+      `Quality Plywoods, Reliable Hardwares & Architectural Finishes.`;
 
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   };

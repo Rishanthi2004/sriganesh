@@ -64,12 +64,12 @@ export function Navbar() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-15 sm:h-16 flex items-center justify-between gap-1.5 sm:gap-4 lg:gap-8">
-        {/* Zone 1: Brand Logo & Wordmark (First Line: ஸ்ரீ கணேஷ் / Second Line: பிளைவுட் & ஹார்ட்வேர்) */}
+      <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 h-15 sm:h-16 flex items-center justify-between gap-1 sm:gap-4 lg:gap-8">
+        {/* Zone 1: Brand Logo & Wordmark (First Line: ஸ்ரீ கணேஷ் / Second Line: பிளைவுட் & ஹார்ட்வேர்) - shrink-0 to NEVER hide on mobile */}
         <Link
           to="/"
           onClick={() => setMobileOpen(false)}
-          className="inline-flex items-center gap-2 sm:gap-3 text-[#0B1D3A] hover:text-[#0E4DA4] transition-colors shrink min-w-0 group py-1"
+          className="inline-flex items-center gap-1.5 sm:gap-3 text-[#0B1D3A] hover:text-[#0E4DA4] transition-colors shrink-0 group py-1 select-none"
         >
           <span className="inline-flex items-center justify-center bg-white rounded-lg p-0.5 border border-[#D4DFEE] shadow-2xs group-hover:border-[#0E4DA4] transition-colors shrink-0">
             <img
@@ -79,12 +79,12 @@ export function Navbar() {
               className="h-8 sm:h-10 lg:h-11 w-auto object-contain shrink-0"
             />
           </span>
-          <div className="flex flex-col text-left leading-none justify-center min-w-0">
-            <span className="font-serif font-bold text-[13px] xs:text-sm sm:text-base lg:text-lg text-[#0B1D3A] tracking-tight group-hover:text-[#0E4DA4] transition-colors whitespace-nowrap">
+          <div className="flex flex-col text-left leading-none justify-center shrink-0">
+            <span className="font-serif font-bold text-sm sm:text-base lg:text-lg text-[#0B1D3A] tracking-tight group-hover:text-[#0E4DA4] transition-colors whitespace-nowrap">
               ஸ்ரீ கணேஷ்
             </span>
-            <span className="font-serif font-semibold text-[10px] xs:text-[11px] sm:text-xs lg:text-[13px] text-[#0E4DA4] tracking-tight mt-0.5 whitespace-nowrap">
-              பிளைவுட் &amp; ஹார்ட்வேர்
+            <span className="font-serif font-semibold text-[11px] sm:text-xs lg:text-[13px] text-[#0E4DA4] tracking-tight mt-0.5 whitespace-nowrap">
+              பிளைவுட்ஸ் &amp; ஹார்ட்வேர்ஸ்
             </span>
           </div>
         </Link>
@@ -126,11 +126,11 @@ export function Navbar() {
           <button
             type="button"
             onClick={toggleLanguage}
-            className="inline-flex items-center gap-1 sm:gap-1.5 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-semibold border border-[#D4DFEE] bg-[#F6F9FC] text-[#0B1D3A] hover:bg-[#EAF1FA] hover:border-[#0E4DA4] active:scale-95 transition-all cursor-pointer shadow-2xs shrink-0"
+            className="inline-flex items-center gap-1 px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-lg text-[10.5px] sm:text-xs font-semibold border border-[#D4DFEE] bg-[#F6F9FC] text-[#0B1D3A] hover:bg-[#EAF1FA] hover:border-[#0E4DA4] active:scale-95 transition-all cursor-pointer shadow-2xs shrink-0"
             title="Switch Language / மொழியை மாற்றுக"
             aria-label="Switch Language"
           >
-            <Globe className="w-3.5 h-3.5 text-[#0E4DA4] shrink-0" />
+            <Globe className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0E4DA4] shrink-0" />
             <span className={language === 'ta' ? 'text-[#0E4DA4] font-bold' : 'text-[#7386A0]'}>தமிழ்</span>
             <span className="text-[#CBD5E1]">/</span>
             <span className={language === 'en' ? 'text-[#0E4DA4] font-bold' : 'text-[#7386A0]'}>EN</span>
@@ -150,12 +150,12 @@ export function Navbar() {
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileOpen}
-            className="md:hidden inline-flex items-center justify-center w-8.5 h-8.5 sm:w-10 sm:h-10 rounded-lg bg-[#F6F9FC] border border-[#D4DFEE] text-[#0B1D3A] hover:bg-[#E4EEF9] hover:border-[#0E4DA4] active:scale-95 transition-all cursor-pointer shrink-0 shadow-2xs"
+            className="md:hidden inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#F6F9FC] border border-[#D4DFEE] text-[#0B1D3A] hover:bg-[#EAF1FA] hover:border-[#0E4DA4] active:scale-95 transition-all cursor-pointer shrink-0 shadow-2xs"
           >
             {mobileOpen ? (
-              <X className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#D61F26]" strokeWidth={2.5} />
+              <X className="w-4 h-4 sm:w-5 sm:h-5 text-[#D61F26]" strokeWidth={2.5} />
             ) : (
-              <Menu className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#0E4DA4]" strokeWidth={2.5} />
+              <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-[#0E4DA4]" strokeWidth={2.5} />
             )}
           </button>
         </div>

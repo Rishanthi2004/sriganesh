@@ -37,9 +37,9 @@ export interface ProductItem {
 }
 
 export type BrandCategoryGroup =
-  | 'Plywood & Laminates'
+  | 'Plywoods & Laminates'
   | 'Paints & Adhesives'
-  | 'Hardware & Kitchen';
+  | 'Hardwares & Kitchen';
 
 export interface BrandItem {
   id: string;
@@ -56,13 +56,13 @@ export const SHOWROOM_IMAGES = {
 };
 
 export const STORE_INFO = {
-  name: 'ஸ்ரீ கணேஷ் பிளைவுட் & ஹார்ட்வேர்',
-  fullName: 'ஸ்ரீ கணேஷ் பிளைவுட் & ஹார்ட்வேர் (SGPH)',
+  name: 'ஸ்ரீ கணேஷ் பிளைவுட்ஸ் & ஹார்ட்வேர்ஸ்',
+  fullName: 'ஸ்ரீ கணேஷ் பிளைவுட்ஸ் & ஹார்ட்வேர்ஸ் (SGPH)',
   shortName: 'ஸ்ரீ கணேஷ் (SGPH)',
   nameLine1: 'ஸ்ரீ கணேஷ்',
-  nameLine2: 'பிளைவுட் & ஹார்ட்வேர்',
-  nameEn: 'Sri Ganesh Plywood & Hardwares',
-  nameTa: 'ஸ்ரீ கணேஷ் பிளைவுட் & ஹார்ட்வேர்',
+  nameLine2: 'பிளைவுட்ஸ் & ஹார்ட்வேர்ஸ்',
+  nameEn: 'Sri Ganesh Plywoods & Hardwares',
+  nameTa: 'ஸ்ரீ கணேஷ் பிளைவுட்ஸ் & ஹார்ட்வேர்ஸ்',
   logo: '/assets/aistudio/Glossy_SGPH_Global_Globe_Logo_d3a0e4c9.png',
   established: '1998',
   contactPerson: 'K. Kalimuthu',
@@ -112,7 +112,7 @@ export const STORE_INFO = {
 export const HOME_CATEGORIES: HomeCategoryItem[] = [
   {
     id: 'Plywood',
-    title: 'Plywood',
+    title: 'Plywoods',
     subtitle: 'Panels, Laminates & Doors',
     description:
       'Calibrated BWP marine plywood, decorative laminates, MDF, block boards, flush doors, and natural veneers.',
@@ -128,7 +128,7 @@ export const HOME_CATEGORIES: HomeCategoryItem[] = [
   },
   {
     id: 'Hardware',
-    title: 'Hardware',
+    title: 'Hardwares',
     subtitle: 'Architectural Fittings & Locks',
     description:
       'Forged brass and matte charcoal door handles, security mortise locks, soft-close hinges, screws, and drawer slides.',
@@ -139,7 +139,7 @@ export const HOME_CATEGORIES: HomeCategoryItem[] = [
 export const PRODUCT_SHOWCASE_HIGHLIGHTS: ProductShowcaseItem[] = [
   {
     id: 'showcase-plywood',
-    title: 'Plywood & Block Boards',
+    title: 'Plywoods & Block Boards',
     image: '/src/assets/images/showcase_plywood_blockboards_1795079457333.jpg',
     productSlug: 'plywood',
     category: 'Plywood',
@@ -167,7 +167,7 @@ export const PRODUCT_SHOWCASE_HIGHLIGHTS: ProductShowcaseItem[] = [
   },
   {
     id: 'showcase-accessories',
-    title: 'Hardware Accessories',
+    title: 'Hardwares & Accessories',
     image: '/src/assets/images/showcase_hardware_accessories_1795079455879.jpg',
     productSlug: 'hardware-accessories',
     category: 'Hardware',
@@ -178,7 +178,7 @@ export const PRODUCTS: ProductItem[] = [
   {
     id: 'plywood',
     slug: 'plywood',
-    name: 'Plywood',
+    name: 'Plywoods',
     group: 'Plywood',
     shortDescription: 'Marine BWP, BWR & MR grade hardwood sheets.',
     fullDescription:
@@ -378,7 +378,7 @@ export const PRODUCTS: ProductItem[] = [
   {
     id: 'hardware-accessories',
     slug: 'hardware-accessories',
-    name: 'Hardware Accessories',
+    name: 'Hardwares & Accessories',
     group: 'Hardware',
     shortDescription: 'Drawer slides, kitchen fittings & tower bolts.',
     fullDescription:
@@ -461,21 +461,21 @@ export const BRANDS: BrandItem[] = [
   {
     id: 'fineply',
     name: 'FinePly NX',
-    category: 'Plywood & Laminates',
+    category: 'Plywoods & Laminates',
     specialty: 'Calibrated hardwood plywood, marine BWP boards, and durable interior panels',
     tagline: 'Forever & Ever NX',
   },
   {
     id: 'greenply',
     name: 'Greenply',
-    category: 'Plywood & Laminates',
+    category: 'Plywoods & Laminates',
     specialty: 'Zero-emission calibrated plywood, block boards, and solid flush doors',
     tagline: 'Industries Limited',
   },
   {
     id: 'centuryply',
     name: 'CenturyPly',
-    category: 'Plywood & Laminates',
+    category: 'Plywoods & Laminates',
     specialty: 'IS:710 BWP marine plywood, natural veneers, and architectural flush doors',
     tagline: 'Trusted Marine & BWR Ply',
   },
@@ -503,42 +503,42 @@ export const BRANDS: BrandItem[] = [
   {
     id: 'ebco',
     name: 'Ebco',
-    category: 'Hardware & Kitchen',
+    category: 'Hardwares & Kitchen',
     specialty: 'Telescopic drawer slides, hydraulic hinges, wardrobe fittings, and office hardware',
     tagline: 'Furniture Fittings & Accessories',
   },
   {
     id: 'hafele',
     name: 'Häfele',
-    category: 'Hardware & Kitchen',
+    category: 'Hardwares & Kitchen',
     specialty: 'Architectural door handles, mortise locks, sliding systems, and modular hardware',
     tagline: 'Architectural Hardware',
   },
   {
     id: 'sleek',
     name: 'Sleek',
-    category: 'Hardware & Kitchen',
+    category: 'Hardwares & Kitchen',
     specialty: 'Modular kitchen baskets, corner solutions, tall units, and soft-close drawer hardware',
     tagline: 'The Kitchen Specialist',
   },
   {
     id: 'godrej',
     name: 'Godrej',
-    category: 'Hardware & Kitchen',
+    category: 'Hardwares & Kitchen',
     specialty: 'High-security mortise locks, euro cylinders, digital door locks, and architectural levers',
     tagline: 'Locks & Architectural Fittings',
   },
   {
     id: 'greenlam',
     name: 'Greenlam Laminates',
-    category: 'Plywood & Laminates',
+    category: 'Plywoods & Laminates',
     specialty: 'High-pressure decorative laminates, synchronized woodgrains, and matte finishes',
     tagline: 'Decorative Laminates',
   },
   {
     id: 'century-laminates',
     name: 'Century Laminates',
-    category: 'Plywood & Laminates',
+    category: 'Plywoods & Laminates',
     specialty: 'Scratch-resistant HPL sheets, anti-fingerprint mattes, and interior surfacing',
     tagline: 'My Design. My Style.',
   },

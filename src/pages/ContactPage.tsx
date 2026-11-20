@@ -64,7 +64,7 @@ export function ContactPage() {
     `Hello ${STORE_INFO.fullName}, I would like to enquire about ${
       form.productInterest !== 'General Enquiry'
         ? form.productInterest
-        : 'plywood, paints and hardware'
+        : 'plywoods, paints and hardwares'
     }.`
   )}`;
 

@@ -352,7 +352,7 @@ export function HomePage() {
                 Featured Materials
               </p>
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#0B1D3A] tracking-tight [text-wrap:balance]">
-                Plywood, Paints &amp; Hardware Essentials
+                Plywoods, Paints &amp; Hardwares Essentials
               </h2>
             </motion.div>
 

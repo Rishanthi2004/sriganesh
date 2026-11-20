@@ -12,10 +12,10 @@ interface LanguageContextType {
 export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   en: {
     // Brand Name is ALWAYS in Tamil
-    brandName: 'ஸ்ரீ கணேஷ் பிளைவுட் & ஹார்ட்வேர்',
+    brandName: 'ஸ்ரீ கணேஷ் பிளைவுட்ஸ் & ஹார்ட்வேர்ஸ்',
     brandLine1: 'ஸ்ரீ கணேஷ்',
-    brandLine2: 'பிளைவுட் & ஹார்ட்வேர்',
-    brandSubtitle: 'Plywood, Paints & Architectural Hardware',
+    brandLine2: 'பிளைவுட்ஸ் & ஹார்ட்வேர்ஸ்',
+    brandSubtitle: 'Plywoods, Paints & Architectural Hardwares',
     
     // Nav
     navHome: 'Home',
@@ -29,10 +29,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Hero
     heroEst: 'Est. 1998',
-    heroPlywood: 'Plywood',
+    heroPlywood: 'Plywoods',
     heroPaints: 'Paints',
-    heroHardware: 'Hardware',
-    heroTitle: 'Quality Plywood & Hardware',
+    heroHardware: 'Hardwares',
+    heroTitle: 'Quality Plywoods & Hardwares',
     heroSubtitle: 'Certified timber, architectural paints, and durable fittings.',
     heroExplore: 'Explore Products',
     heroWhatsApp: 'WhatsApp Us',
@@ -46,7 +46,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Showroom Pillars
     pillar1Title: 'Genuine Certified Stock',
-    pillar1Desc: '100% authentic IS:710 marine plywood, IS:303 boards, and warranted architectural hardware.',
+    pillar1Desc: '100% authentic IS:710 marine plywoods, IS:303 boards, and warranted architectural hardwares.',
     pillar2Title: 'Complete Interior Range',
     pillar2Desc: 'Over 600 laminate shades, architectural paints, wood finishes, and fittings under one roof.',
     pillar3Title: 'Dependable Site Delivery',
@@ -54,19 +54,19 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // About / Founder
     founderBadge: 'About Our Founder & Leadership',
-    founderHeader: 'Leadership Behind Sri Ganesh Plywood',
+    founderHeader: 'Leadership Behind Sri Ganesh Plywoods & Hardwares',
     founderHeaderDesc: 'The foundational expertise and guiding principles behind nearly three decades of timber excellence.',
     founderProfileTag: 'Founder Profile',
     founderName: 'K. Kalimuthu',
     founderNameTa: 'கே. காளிமுத்து',
     founderDesignation: 'Founder & Managing Director',
-    founderBio: 'Founded Sri Ganesh Plywood & Hardwares in 1998, establishing nearly three decades of trusted supply in authentic IS:710 marine plywood, calibrated boards, and architectural hardware across Namakkal and Tamil Nadu.',
+    founderBio: 'Founded Sri Ganesh Plywoods & Hardwares in 1998, establishing nearly three decades of trusted supply in authentic IS:710 marine plywoods, calibrated boards, and architectural hardwares across Namakkal and Tamil Nadu.',
     founderExp: 'Years Experience',
     founderStock: 'Certified Stock',
     founderActive: 'Since 1998',
-    founderPill1: 'Calibrated Hardwood Plywood',
+    founderPill1: 'Calibrated Hardwood Plywoods',
     founderPill2: 'IS:710 Marine & IS:303 Boards',
-    founderPill3: 'Precision Architectural Hardware',
+    founderPill3: 'Precision Architectural Hardwares',
     shareFounderBtn: 'Share Founder Details',
     shareFounderHeader: 'Founder Contact & Details',
     shareFounderSub: "Share K. Kalimuthu's credentials and showroom information",
@@ -93,23 +93,23 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Products Page
     allProducts: 'All Products',
-    searchPlaceholder: 'Search plywood, paints, hinges...',
+    searchPlaceholder: 'Search plywoods, paints, hinges...',
     showingText: 'Showing',
     productRangesText: 'product ranges of',
     viewDetails: 'View Details',
 
     // Footer
-    footerDesc: 'Exclusive dealers in quality plywood, laminates, paints, and architectural hardware serving Namakkal and surrounding regions since 1998.',
+    footerDesc: 'Exclusive dealers in quality plywoods, laminates, paints, and architectural hardwares serving Namakkal and surrounding regions since 1998.',
     footerContactPerson: 'Contact',
     footerShowroomPages: 'Showroom Pages',
     footerRights: 'All rights reserved.',
   },
   ta: {
     // Brand Name is ALWAYS in Tamil
-    brandName: 'ஸ்ரீ கணேஷ் பிளைவுட் & ஹார்ட்வேர்',
+    brandName: 'ஸ்ரீ கணேஷ் பிளைவுட்ஸ் & ஹார்ட்வேர்ஸ்',
     brandLine1: 'ஸ்ரீ கணேஷ்',
-    brandLine2: 'பிளைவுட் & ஹார்ட்வேர்',
-    brandSubtitle: 'ப்ளைவுட், பெயிண்ட்ஸ் & ஆர்கிடெக்சுரல் ஹார்ட்வேர்',
+    brandLine2: 'பிளைவுட்ஸ் & ஹார்ட்வேர்ஸ்',
+    brandSubtitle: 'ப்ளைவுட்ஸ், பெயிண்ட்ஸ் & ஆர்கிடெக்சுரல் ஹார்ட்வேர்ஸ்',
 
     // Nav
     navHome: 'முகப்பு',
@@ -123,10 +123,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Hero
     heroEst: 'தொடக்கம் 1998',
-    heroPlywood: 'ப்ளைவுட்',
+    heroPlywood: 'ப்ளைவுட்ஸ்',
     heroPaints: 'பெயின்ட்ஸ்',
-    heroHardware: 'ஹார்ட்வேர்',
-    heroTitle: 'உயர்தர ப்ளைவுட் & ஹார்ட்வேர்ஸ்',
+    heroHardware: 'ஹார்ட்வேர்ஸ்',
+    heroTitle: 'உயர்தர ப்ளைவுட்ஸ் & ஹார்ட்வேர்ஸ்',
     heroSubtitle: 'சான்றளிக்கப்பட்ட மர பலகைகள், ஆர்கிடெக்சுரல் பெயிண்ட்ஸ் மற்றும் தரமான ஃபிட்டிங்ஸ்.',
     heroExplore: 'தயாரிப்புகளை காண்க',
     heroWhatsApp: 'வாட்ஸ்அப்',
@@ -140,7 +140,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Showroom Pillars
     pillar1Title: 'உண்மையான சான்றளிக்கப்பட்ட தரம்',
-    pillar1Desc: '100% நம்பகமான IS:710 மரைன் ப்ளைவுட், IS:303 போர்டுகள் மற்றும் உத்தரவாதமுள்ள ஹார்ட்வேர் பொருட்கள்.',
+    pillar1Desc: '100% நம்பகமான IS:710 மரைன் ப்ளைவுட்ஸ், IS:303 போர்டுகள் மற்றும் உத்தரவாதமுள்ள ஹார்ட்வேர்ஸ் பொருட்கள்.',
     pillar2Title: 'முழுமையான இன்டீரியர் பொருட்கள்',
     pillar2Desc: '600-க்கும் மேற்பட்ட லேமினேட் வண்ணங்கள், ஆர்கிடெக்சுரல் பெயிண்ட்ஸ் மற்றும் ஃபிட்டிங்ஸ் ஒரே இடத்தில்.',
     pillar3Title: 'நேரடி தள டெலிவரி',
@@ -148,19 +148,19 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // About / Founder
     founderBadge: 'நிறுவனர் & தலைமைத்துவம்',
-    founderHeader: 'ஸ்ரீ கணேஷ் ப்ளைவுட்ஸ் தலைமைத்துவம்',
+    founderHeader: 'ஸ்ரீ கணேஷ் ப்ளைவுட்ஸ் & ஹார்ட்வேர்ஸ் தலைமைத்துவம்',
     founderHeaderDesc: 'சுமார் 28 ஆண்டுகளுக்கும் மேலான அனுபவமும், தரமான மரப் பொருட்களுக்கான அசைக்க முடியாத நம்பிக்கையும்.',
     founderProfileTag: 'நிறுவனர் சுயவிவரம்',
     founderName: 'கே. காளிமுத்து',
     founderNameTa: 'கே. காளிமுத்து',
     founderDesignation: 'நிறுவனர் & நிர்வாக இயக்குனர்',
-    founderBio: '1998-ஆம் ஆண்டு முதல் நாமக்கல் மற்றும் சுற்றுவட்டார பகுதிகளில் அசல் IS:710 மரைன் ப்ளைவுட், கேலிபிரேட்டட் போர்டுகள் மற்றும் ஆர்கிடெக்சுரல் ஹார்ட்வேர் வழங்கி வரும் 28+ ஆண்டுகால நம்பகமான நிறுவனம்.',
+    founderBio: '1998-ஆம் ஆண்டு முதல் நாமக்கல் மற்றும் சுற்றுவட்டார பகுதிகளில் அசல் IS:710 மரைன் ப்ளைவுட்ஸ், கேலிபிரேட்டட் போர்டுகள் மற்றும் ஆர்கிடெக்சுரல் ஹார்ட்வேர்ஸ் வழங்கி வரும் 28+ ஆண்டுகால நம்பகமான நிறுவனம்.',
     founderExp: 'ஆண்டுகள் அனுபவம்',
     founderStock: '100% சான்றளிக்கப்பட்ட தரம்',
     founderActive: 'தொடக்கம் 1998',
-    founderPill1: 'கேலிபிரேட்டட் ஹார்டுவுட் ப்ளைவுட்',
+    founderPill1: 'கேலிபிரேட்டட் ஹார்டுவுட் ப்ளைவுட்ஸ்',
     founderPill2: 'IS:710 மரைன் & IS:303 போர்டுகள்',
-    founderPill3: 'ஆர்கிடெக்சுரல் ஹார்ட்வேர் ஸ்பெஷலிஸ்ட்',
+    founderPill3: 'ஆர்கிடெக்சுரல் ஹார்ட்வேர்ஸ் ஸ்பெஷலிஸ்ட்',
     shareFounderBtn: 'நிறுவனர் விவரங்களை பகிர்க',
     shareFounderHeader: 'நிறுவனர் தொடர்பு விவரங்கள்',
     shareFounderSub: 'கே. காளிமுத்து அவர்களின் விவரங்கள் மற்றும் ஷோரூம் தகவலை பகிரவும்',
@@ -187,13 +187,13 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Products Page
     allProducts: 'அனைத்து பொருட்கள்',
-    searchPlaceholder: 'ப்ளைவுட், பெயிண்ட், ஹார்ட்வேர் தேடுக...',
+    searchPlaceholder: 'ப்ளைவுட்ஸ், பெயிண்ட், ஹார்ட்வேர்ஸ் தேடுக...',
     showingText: 'காட்டப்படுவது',
     productRangesText: 'வகைகள் மொத்தம்',
     viewDetails: 'முழு விவரம்',
 
     // Footer
-    footerDesc: 'நாமக்கல் மற்றும் சுற்றுவட்டாரப் பகுதிகளுக்கு 1998 முதல் தரமான ப்ளைவுட், லேமினேட்ஸ், பெயிண்ட்ஸ் மற்றும் ஆர்கிடெக்சுரல் ஹார்ட்வேர் வழங்கும் நம்பகமான ஷோரூம்.',
+    footerDesc: 'நாமக்கல் மற்றும் சுற்றுவட்டாரப் பகுதிகளுக்கு 1998 முதல் தரமான ப்ளைவுட்ஸ், லேமினேட்ஸ், பெயிண்ட்ஸ் மற்றும் ஆர்கிடெக்சுரல் ஹார்ட்வேர்ஸ் வழங்கும் நம்பகமான ஷோரூம்.',
     footerContactPerson: 'தொடர்புக்கு',
     footerShowroomPages: 'ஷோரூம் பக்கங்கள்',
     footerRights: 'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.',

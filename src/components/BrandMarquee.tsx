@@ -15,7 +15,7 @@ export function BrandMarquee() {
             Exclusive Dealers In
           </p>
           <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-[#0B1D3A] tracking-tight">
-            Trusted Plywood, Paint &amp; Hardware Brands
+            Trusted Plywoods, Paints &amp; Hardwares Brands
           </h2>
         </div>
 

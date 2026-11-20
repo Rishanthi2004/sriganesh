@@ -148,7 +148,7 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {STORE_INFO.fullName}. {t('footerRights')}
           </p>
-          <p>Namakkal, Tamil Nadu · Plywood, Paints &amp; Architectural Hardware</p>
+          <p>Namakkal, Tamil Nadu · Plywoods, Paints &amp; Architectural Hardwares</p>
         </div>
       </div>
     </footer>

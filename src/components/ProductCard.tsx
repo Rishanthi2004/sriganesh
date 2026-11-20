@@ -51,10 +51,14 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const groupLabel =
     language === 'ta'
       ? product.group === 'Plywood'
-        ? 'ப்ளைவுட்'
+        ? 'ப்ளைவுட்ஸ்'
         : product.group === 'Paints'
         ? 'பெயின்ட்ஸ்'
-        : 'ஹார்ட்வேர்'
+        : 'ஹார்ட்வேர்ஸ்'
+      : product.group === 'Plywood'
+      ? 'Plywoods'
+      : product.group === 'Hardware'
+      ? 'Hardwares'
       : product.group;
 
   return (

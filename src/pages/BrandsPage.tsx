@@ -10,9 +10,9 @@ type BrandFilter = 'All' | BrandCategoryGroup;
 
 const BRAND_FILTERS: { label: string; value: BrandFilter }[] = [
   { label: 'All Brands', value: 'All' },
-  { label: 'Plywood & Laminates', value: 'Plywood & Laminates' },
+  { label: 'Plywoods & Laminates', value: 'Plywoods & Laminates' },
   { label: 'Paints & Adhesives', value: 'Paints & Adhesives' },
-  { label: 'Hardware & Kitchen', value: 'Hardware & Kitchen' },
+  { label: 'Hardwares & Kitchen', value: 'Hardwares & Kitchen' },
 ];
 
 export function BrandsPage() {
@@ -39,11 +39,11 @@ export function BrandsPage() {
               Exclusive Dealers In
             </p>
             <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-semibold text-[#0B1D3A] tracking-tight leading-[1.15] mb-2 sm:mb-4 [text-wrap:balance]">
-              Trusted Plywood, Paint &amp; Hardware Brands
+              Trusted Plywoods, Paints &amp; Hardwares Brands
             </h1>
             <p className="text-xs sm:text-base text-[#485A72] leading-relaxed">
-              We are authorized dealers for leading plywood, laminate, paint, kitchen fitting,
-              and architectural hardware manufacturers—guaranteeing genuine stock and official
+              We are authorized dealers for leading plywoods, laminates, paints, kitchen fittings,
+              and architectural hardwares manufacturers—guaranteeing genuine stock and official
               brand warranties across every order.
             </p>
           </motion.div>

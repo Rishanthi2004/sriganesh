@@ -37,9 +37,9 @@ export function ProductsPage() {
 
   const filterOptions: { label: string; value: FilterValue }[] = [
     { label: t('allProducts'), value: 'All' },
-    { label: language === 'ta' ? 'ப்ளைவுட்' : 'Plywood', value: 'Plywood' },
+    { label: language === 'ta' ? 'ப்ளைவுட்ஸ்' : 'Plywoods', value: 'Plywood' },
     { label: language === 'ta' ? 'பெயின்ட்ஸ்' : 'Paints', value: 'Paints' },
-    { label: language === 'ta' ? 'ஹார்ட்வேர்' : 'Hardware', value: 'Hardware' },
+    { label: language === 'ta' ? 'ஹார்ட்வேர்ஸ்' : 'Hardwares', value: 'Hardware' },
   ];
 
   useEffect(() => {
