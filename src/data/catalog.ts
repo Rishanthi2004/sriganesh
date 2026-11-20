@@ -90,6 +90,8 @@ export const STORE_INFO = {
     phoneHref: 'tel:+919842684640',
     mapsUrl:
       'https://www.google.com/maps/search/?api=1&query=73+Mohanur+Main+Road+Near+Iyappan+Kovil+Namakkal+637001+Tamil+Nadu',
+    embedUrl:
+      'https://maps.google.com/maps?q=73+Mohanur+Main+Road+Near+Iyappan+Kovil+Namakkal+637001&t=&z=16&ie=UTF8&iwloc=&output=embed',
   },
   branchOffice: {
     label: 'Branch Office',
@@ -107,6 +109,8 @@ export const STORE_INFO = {
     phoneHref: 'tel:+919344384640',
     mapsUrl:
       'https://www.google.com/maps/search/?api=1&query=Vangili+Complex+Near+Andavar+Petrol+Bunk+Trichy+Road+Namakkal+637001+Tamil+Nadu',
+    embedUrl:
+      'https://maps.google.com/maps?q=Vangili+Complex+Near+Andavar+Petrol+Bunk+Trichy+Road+Namakkal+637001&t=&z=16&ie=UTF8&iwloc=&output=embed',
   },
 };
 

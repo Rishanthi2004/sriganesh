@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, useEffect, useRef, FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
@@ -77,7 +77,13 @@ export function ContactPage() {
       : []),
   ];
 
-  const offices = [STORE_INFO.headOffice, STORE_INFO.branchOffice];
+  const offices = [
+    { ...STORE_INFO.headOffice, id: 'head-office' },
+    { ...STORE_INFO.branchOffice, id: 'branch-office' },
+  ];
+  const [selectedOfficeId, setSelectedOfficeId] = useState<'head-office' | 'branch-office'>('head-office');
+  const mapSectionRef = useRef<HTMLDivElement>(null);
+  const selectedOffice = offices.find((o) => o.id === selectedOfficeId) || offices[0];
 
   return (
     <PageTransition>
@@ -137,32 +143,15 @@ export function ContactPage() {
                   <div className="flex items-start gap-3.5">
                     <Phone className="w-5 h-5 text-[#16803C] mt-0.5 shrink-0" />
                     <div className="space-y-1">
-                      <p className="font-medium text-[#0B1D3A]">Phone Numbers</p>
+                      <p className="font-medium text-[#0B1D3A]">
+                        {language === 'ta' ? 'முதன்மை தொலைபேசி எண்' : 'Primary Phone Number'}
+                      </p>
                       <p className="text-[#485A72] tabular-nums">
-                        Primary:{' '}
                         <a
                           href={STORE_INFO.phoneHref}
                           className="font-medium text-[#0B1D3A] hover:text-[#16803C] transition-colors"
                         >
                           {STORE_INFO.phoneRaw}
-                        </a>
-                      </p>
-                      <p className="text-[#485A72] tabular-nums">
-                        Head Office:{' '}
-                        <a
-                          href={STORE_INFO.headOffice.phoneHref}
-                          className="font-medium text-[#0B1D3A] hover:text-[#0E4DA4] transition-colors"
-                        >
-                          {STORE_INFO.headOffice.phoneRaw}
-                        </a>
-                      </p>
-                      <p className="text-[#485A72] tabular-nums">
-                        Branch Office:{' '}
-                        <a
-                          href={STORE_INFO.branchOffice.phoneHref}
-                          className="font-medium text-[#0B1D3A] hover:text-[#D61F26] transition-colors"
-                        >
-                          {STORE_INFO.branchOffice.phoneRaw}
                         </a>
                       </p>
                     </div>
@@ -208,53 +197,112 @@ export function ContactPage() {
                 </div>
               </div>
 
-              {/* Head Office & Branch Office Cards with Google Maps Links */}
-              {offices.map((office) => (
-                <div
-                  key={office.label}
-                  className="bg-white rounded-xl border border-[#D4DFEE] overflow-hidden"
-                >
-                  <div className="px-6 py-4 bg-[#EAF1FA] border-b border-[#D4DFEE] flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-[#0E4DA4] shrink-0" />
-                      <h3 className="font-serif text-base font-semibold text-[#0B1D3A]">
-                        {office.label}
-                      </h3>
-                    </div>
-                    <a
-                      href={office.phoneHref}
-                      className="text-xs font-semibold text-[#0E4DA4] hover:text-[#093678] tabular-nums whitespace-nowrap"
+              {/* Head Office & Branch Office Cards (Clickable: Navigates Map on Right) */}
+              {offices.map((office) => {
+                const isSelected = selectedOfficeId === office.id;
+                return (
+                  <div
+                    key={office.id}
+                    onClick={() => {
+                      setSelectedOfficeId(office.id as 'head-office' | 'branch-office');
+                      if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+                        mapSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    aria-pressed={isSelected}
+                    aria-label={`Select ${office.label} to view on map`}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setSelectedOfficeId(office.id as 'head-office' | 'branch-office');
+                      }
+                    }}
+                    className={`bg-white rounded-xl border transition-all duration-200 cursor-pointer overflow-hidden ${
+                      isSelected
+                        ? 'border-[#0E4DA4] ring-2 ring-[#0E4DA4]/20 shadow-md'
+                        : 'border-[#D4DFEE] hover:border-[#0E4DA4]/60 hover:shadow-xs'
+                    }`}
+                  >
+                    <div
+                      className={`px-5 py-3.5 sm:px-6 sm:py-4 border-b flex items-center justify-between gap-3 transition-colors ${
+                        isSelected
+                          ? 'bg-[#EAF1FA] border-[#0E4DA4]/25'
+                          : 'bg-[#F8FAFD] border-[#D4DFEE]'
+                      }`}
                     >
-                      {office.phoneRaw}
-                    </a>
-                  </div>
-
-                  <div className="p-6 space-y-4">
-                    <p className="text-sm text-[#485A72] leading-relaxed">
-                      {office.addressLines.map((line) => (
-                        <span key={line} className="block">
-                          {line}
-                        </span>
-                      ))}
-                    </p>
-
-                    <div className="pt-3 border-t border-[#EAF1FA] flex items-center justify-between gap-3">
-                      <span className="text-xs text-[#5E718B] truncate">
-                        {office.landmark}
-                      </span>
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <MapPin
+                          className={`w-4 h-4 shrink-0 transition-colors ${
+                            isSelected ? 'text-[#0E4DA4]' : 'text-[#7386A0]'
+                          }`}
+                        />
+                        <h3 className="font-serif text-base font-semibold text-[#0B1D3A] truncate">
+                          {office.label}
+                        </h3>
+                        {isSelected && (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#0E4DA4] text-white shrink-0">
+                            Active on Map
+                          </span>
+                        )}
+                      </div>
                       <a
-                        href={office.mapsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-[#0B1D3A] bg-[#F6F9FC] border border-[#D4DFEE] rounded-lg hover:bg-[#0B1D3A] hover:text-[#F6F9FC] hover:border-[#0B1D3A] transition-colors whitespace-nowrap shrink-0"
+                        href={office.phoneHref}
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-xs font-semibold text-[#0E4DA4] hover:text-[#093678] tabular-nums whitespace-nowrap"
                       >
-                        <span>Open in Google Maps</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
+                        {office.phoneRaw}
                       </a>
                     </div>
+
+                    <div className="p-5 sm:p-6 space-y-3.5 sm:space-y-4">
+                      <p className="text-sm text-[#485A72] leading-relaxed">
+                        {office.addressLines.map((line) => (
+                          <span key={line} className="block">
+                            {line}
+                          </span>
+                        ))}
+                      </p>
+
+                      <div className="pt-3 border-t border-[#EAF1FA] flex items-center justify-between gap-3">
+                        <span className="text-xs text-[#5E718B] truncate">
+                          {office.landmark}
+                        </span>
+                        <div className="flex items-center gap-2 shrink-0">
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedOfficeId(office.id as 'head-office' | 'branch-office');
+                              if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+                                mapSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                              }
+                            }}
+                            className={`inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer ${
+                              isSelected
+                                ? 'bg-[#0E4DA4] text-white shadow-2xs'
+                                : 'bg-[#EAF1FA] text-[#0E4DA4] hover:bg-[#0E4DA4] hover:text-white'
+                            }`}
+                          >
+                            <span>{isSelected ? 'Viewing on Map' : 'View on Map'}</span>
+                          </button>
+                          <a
+                            href={office.mapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#0B1D3A] bg-[#F6F9FC] border border-[#D4DFEE] rounded-lg hover:bg-[#0B1D3A] hover:text-[#F6F9FC] hover:border-[#0B1D3A] transition-colors whitespace-nowrap shrink-0"
+                          >
+                            <span>Google Maps</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </motion.div>
 
             {/* Right Column: Contact Enquiry Form + Namakkal Map Preview */}
@@ -464,49 +512,55 @@ export function ContactPage() {
                 )}
               </div>
 
-              {/* Namakkal Showrooms Location Schematic Card */}
-              <div className="bg-white rounded-xl border border-[#D4DFEE] overflow-hidden">
-                <div className="relative h-52 bg-[#E4EEF9] wood-grain-surface p-6 flex items-center justify-center overflow-hidden">
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 600 210"
-                    className="absolute inset-0 w-full h-full opacity-55 pointer-events-none"
-                    fill="none"
-                  >
-                    <path d="M0 60 H600 M0 135 H600" stroke="#B9CDE5" strokeWidth="2" />
-                    <path d="M120 0 V210 M300 0 V210 M480 0 V210" stroke="#B9CDE5" strokeWidth="2" />
-                    <path d="M40 165 L230 105 L410 105 L560 55" stroke="#7FA3CF" strokeWidth="5" />
-                  </svg>
-
-                  <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-xl">
-                    <div className="bg-white/95 backdrop-blur-xs border border-[#D4DFEE] rounded-xl p-4 shadow-xs flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-full bg-[#0E4DA4] text-[#F6F9FC] flex items-center justify-center shrink-0">
-                        <MapPin className="w-4 h-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="font-serif text-sm font-semibold text-[#0B1D3A]">
-                          SGPH Head Office
-                        </p>
-                        <p className="text-xs text-[#485A72] mt-0.5">
-                          Mohanur Main Road, Near Iyappan Kovil, Namakkal
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="bg-white/95 backdrop-blur-xs border border-[#D4DFEE] rounded-xl p-4 shadow-xs flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-full bg-[#0B1D3A] text-[#F6F9FC] flex items-center justify-center shrink-0">
-                        <MapPin className="w-4 h-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="font-serif text-sm font-semibold text-[#0B1D3A]">
-                          SGPH Branch Office
-                        </p>
-                        <p className="text-xs text-[#485A72] mt-0.5">
-                          Vangili Complex, Near Andavar Petrol Bunk, Trichy Road, Namakkal
-                        </p>
-                      </div>
+              {/* Interactive Showroom Map Card (Controlled by Office Cards on the Left) */}
+              <div
+                ref={mapSectionRef}
+                className="bg-white rounded-xl border border-[#D4DFEE] overflow-hidden shadow-xs scroll-mt-24"
+              >
+                {/* Clean Header Bar showing selected office & directions button */}
+                <div className="px-5 py-3.5 bg-[#EAF1FA] border-b border-[#D4DFEE] flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className="relative flex h-3 w-3 shrink-0">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#16803C] opacity-75" />
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-[#16803C]" />
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="font-serif text-sm sm:text-base font-semibold text-[#0B1D3A] flex items-center gap-2 truncate">
+                        <span>{selectedOffice.label === 'Head Office' ? 'SGPH Head Office' : 'SGPH Branch Office'}</span>
+                        <span className="text-xs font-normal text-[#5E718B]">
+                          ({selectedOffice.label === 'Head Office' ? 'Mohanur Road' : 'Trichy Road'})
+                        </span>
+                      </h3>
+                      <p className="text-[11px] sm:text-xs text-[#485A72] truncate">
+                        {selectedOffice.shortAddress}
+                      </p>
                     </div>
                   </div>
+
+                  <a
+                    href={selectedOffice.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-[#0E4DA4] hover:bg-[#093678] rounded-lg transition-colors whitespace-nowrap shadow-2xs shrink-0"
+                  >
+                    <span>Get Directions</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+
+                {/* Live Interactive Google Map Frame with active pin marker */}
+                <div className="relative h-72 sm:h-96 w-full bg-[#E4EEF9]">
+                  <iframe
+                    key={selectedOffice.id}
+                    title={`${selectedOffice.label} Google Map`}
+                    src={selectedOffice.embedUrl}
+                    width="100%"
+                    height="100%"
+                    className="w-full h-full border-0"
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
               </div>
             </motion.div>
