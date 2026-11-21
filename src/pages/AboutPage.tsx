@@ -482,7 +482,7 @@ export function AboutPage() {
                   loop
                   muted={isMuted}
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   onClick={togglePlay}
                   className="w-full h-full object-cover cursor-pointer"
                 >
