@@ -15,6 +15,10 @@ import {
   MessageCircle,
   ExternalLink,
   Sparkles,
+  Instagram,
+  Play,
+  Volume2,
+  VolumeX,
 } from 'lucide-react';
 import { STORE_INFO } from '../data/catalog';
 import { PageTransition } from '../components/PageTransition';
@@ -64,6 +68,30 @@ export function AboutPage() {
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [copiedState, setCopiedState] = useState<'details' | 'link' | null>(null);
   const shareMenuRef = useRef<HTMLDivElement>(null);
+
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isPlaying) {
+      video.pause();
+      setIsPlaying(false);
+    } else {
+      video.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -395,44 +423,134 @@ export function AboutPage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6 lg:gap-8">
-            {WHY_CHOOSE_US.map((item, index) => {
-              const Icon = item.icon;
-              const cardThemes = [
-                { iconColor: 'text-[#0E4DA4]', iconBg: 'bg-[#EAF1FA]', borderHover: 'hover:border-[#0E4DA4]', shadow: 'hover:shadow-[0_8px_20px_rgba(14,77,164,0.08)]' },
-                { iconColor: 'text-[#16803C]', iconBg: 'bg-[#F0FAF2]', borderHover: 'hover:border-[#16803C]', shadow: 'hover:shadow-[0_8px_20px_rgba(22,128,60,0.08)]' },
-                { iconColor: 'text-[#D61F26]', iconBg: 'bg-[#FDF2F2]', borderHover: 'hover:border-[#D61F26]', shadow: 'hover:shadow-[0_8px_20px_rgba(214,31,38,0.08)]' },
-                { iconColor: 'text-[#0E4DA4]', iconBg: 'bg-[#EAF1FA]', borderHover: 'hover:border-[#0E4DA4]', shadow: 'hover:shadow-[0_8px_20px_rgba(14,77,164,0.08)]' },
-                { iconColor: 'text-[#16803C]', iconBg: 'bg-[#F0FAF2]', borderHover: 'hover:border-[#16803C]', shadow: 'hover:shadow-[0_8px_20px_rgba(22,128,60,0.08)]' },
-                { iconColor: 'text-[#D61F26]', iconBg: 'bg-[#FDF2F2]', borderHover: 'hover:border-[#D61F26]', shadow: 'hover:shadow-[0_8px_20px_rgba(214,31,38,0.08)]' },
-              ];
-              const theme = cardThemes[index % cardThemes.length];
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+            {/* Left Side: Why Choose Us Details (6 Feature Cards in a 2-column grid) */}
+            <div className="lg:col-span-7">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+                {WHY_CHOOSE_US.map((item, index) => {
+                  const Icon = item.icon;
+                  const cardThemes = [
+                    { iconColor: 'text-[#0E4DA4]', iconBg: 'bg-[#EAF1FA]', borderHover: 'hover:border-[#0E4DA4]', shadow: 'hover:shadow-[0_8px_20px_rgba(14,77,164,0.08)]' },
+                    { iconColor: 'text-[#16803C]', iconBg: 'bg-[#F0FAF2]', borderHover: 'hover:border-[#16803C]', shadow: 'hover:shadow-[0_8px_20px_rgba(22,128,60,0.08)]' },
+                    { iconColor: 'text-[#D61F26]', iconBg: 'bg-[#FDF2F2]', borderHover: 'hover:border-[#D61F26]', shadow: 'hover:shadow-[0_8px_20px_rgba(214,31,38,0.08)]' },
+                    { iconColor: 'text-[#0E4DA4]', iconBg: 'bg-[#EAF1FA]', borderHover: 'hover:border-[#0E4DA4]', shadow: 'hover:shadow-[0_8px_20px_rgba(14,77,164,0.08)]' },
+                    { iconColor: 'text-[#16803C]', iconBg: 'bg-[#F0FAF2]', borderHover: 'hover:border-[#16803C]', shadow: 'hover:shadow-[0_8px_20px_rgba(22,128,60,0.08)]' },
+                    { iconColor: 'text-[#D61F26]', iconBg: 'bg-[#FDF2F2]', borderHover: 'hover:border-[#D61F26]', shadow: 'hover:shadow-[0_8px_20px_rgba(214,31,38,0.08)]' },
+                  ];
+                  const theme = cardThemes[index % cardThemes.length];
 
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.12 }}
-                  transition={{
-                    duration: 0.42,
-                    delay: index * 0.04,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className={`p-4 sm:p-6 rounded-xl bg-[#F6F9FC] border border-[#D4DFEE] ${theme.borderHover} ${theme.shadow} hover:-translate-y-0.5 transition-all`}
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, y: 18 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.12 }}
+                      transition={{
+                        duration: 0.38,
+                        delay: index * 0.04,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className={`p-3.5 sm:p-4 rounded-xl bg-[#F6F9FC] border border-[#D4DFEE] ${theme.borderHover} ${theme.shadow} hover:-translate-y-0.5 transition-all`}
+                    >
+                      <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg ${theme.iconBg} ${theme.iconColor} flex items-center justify-center mb-2.5 shadow-2xs`}>
+                        <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5" strokeWidth={2} />
+                      </div>
+                      <h3 className="font-serif text-sm sm:text-base font-semibold text-[#0B1D3A] mb-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-[#485A72] leading-relaxed">
+                        {item.description}
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right Side: Instagram Reel Video Showcase */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-5 flex flex-col items-center justify-center"
+            >
+              <div className="relative w-full max-w-[320px] sm:max-w-[340px] aspect-[9/16] rounded-2xl overflow-hidden shadow-xl border-2 border-[#D4DFEE] bg-[#0B1D3A] group">
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  preload="auto"
+                  onClick={togglePlay}
+                  className="w-full h-full object-cover cursor-pointer"
                 >
-                  <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg ${theme.iconBg} ${theme.iconColor} flex items-center justify-center mb-3 shadow-2xs`}>
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
+                  <source src="/instagram-reel.mp4" type="video/mp4" />
+                </video>
+
+                {/* Subtle top & bottom shadow gradients for controls visibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 pointer-events-none" />
+
+                {/* Top Controls: Sound Mute/Unmute & Status Badge */}
+                <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10 pointer-events-auto">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold text-white bg-black/60 backdrop-blur-md border border-white/20">
+                    <span className="w-2 h-2 rounded-full bg-[#16803C] animate-pulse" />
+                    <span>SGPH Showroom</span>
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={toggleMute}
+                    aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+                    className="p-1.5 rounded-full text-white/90 bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/20 transition-all active:scale-95 cursor-pointer"
+                  >
+                    {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-[#8CC2FF]" />}
+                  </button>
+                </div>
+
+                {/* Center Play indicator overlay when paused */}
+                {!isPlaying && (
+                  <button
+                    type="button"
+                    onClick={togglePlay}
+                    aria-label="Play video"
+                    className="absolute inset-0 flex items-center justify-center bg-black/35 z-10 cursor-pointer"
+                  >
+                    <div className="w-14 h-14 rounded-full bg-white/90 text-[#0B1D3A] flex items-center justify-center shadow-lg transform transition-transform hover:scale-110">
+                      <Play className="w-6 h-6 fill-[#0B1D3A] translate-x-0.5" />
+                    </div>
+                  </button>
+                )}
+
+                {/* Bottom Bar: Instagram Link & Reel Title */}
+                <div className="absolute bottom-3 inset-x-3 z-10 flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs font-medium text-white/90 drop-shadow-sm truncate">
+                      Sri Ganesh Plywoods Showroom
+                    </p>
+                    <button
+                      type="button"
+                      onClick={togglePlay}
+                      className="text-[11px] text-white/80 hover:text-white underline cursor-pointer"
+                    >
+                      {isPlaying ? 'Pause' : 'Play'}
+                    </button>
                   </div>
-                  <h3 className="font-serif text-base sm:text-lg font-semibold text-[#0B1D3A] mb-1.5">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#485A72] leading-relaxed">
-                    {item.description}
-                  </p>
-                </motion.div>
-              );
-            })}
+
+                  <a
+                    href="https://www.instagram.com/reels/Df4ZvHLSdnn/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full py-2 px-3 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737] hover:opacity-95 shadow-md active:scale-98 transition-all"
+                  >
+                    <Instagram className="w-3.5 h-3.5" />
+                    <span>Watch Full Reel on Instagram</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
           </div>
 
           <motion.div
