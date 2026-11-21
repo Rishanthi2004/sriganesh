@@ -105,11 +105,11 @@ export function BrandsPage() {
                   delay: Math.min(index * 0.04, 0.2),
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group bg-white rounded-xl border border-[#D4DFEE] p-6 flex flex-col justify-between shadow-[0_2px_8px_rgba(11,29,58,0.03)] hover:shadow-[0_12px_26px_rgba(11,29,58,0.08)] hover:border-[#9AB7DC] hover:-translate-y-1 transition-all duration-200"
+                className="group bg-[#F0F6FC] rounded-xl border border-[#D4DFEE] p-6 flex flex-col justify-between shadow-[0_2px_8px_rgba(11,29,58,0.03)] hover:shadow-[0_12px_26px_rgba(11,29,58,0.08)] hover:border-[#9AB7DC] hover:-translate-y-1 transition-all duration-200"
               >
                 <div>
                   {/* Clean Logo Presentation Stage */}
-                  <div className="h-20 px-4 mb-5 rounded-lg bg-[#F6F9FC] border border-[#E4EEF9] flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02]">
+                  <div className="h-20 px-4 mb-5 rounded-lg bg-white border border-[#D4DFEE] flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02] shadow-2xs">
                     <BrandLogo brandId={brand.id} />
                   </div>
 
@@ -128,7 +128,7 @@ export function BrandsPage() {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[#EAF1FA] flex items-center justify-between text-xs">
+                <div className="mt-6 pt-4 border-t border-[#DCE7F5] flex items-center justify-between text-xs">
                   <span className="text-[#5E718B]">Exclusive Dealer</span>
                   <Link
                     to={`/contact?product=${encodeURIComponent(brand.name)}`}
