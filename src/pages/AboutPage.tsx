@@ -424,9 +424,9 @@ export function AboutPage() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-            {/* Left Side: Why Choose Us Details (6 Feature Cards in a 2-column grid) */}
+            {/* Left Side: Why Choose Us Details (6 Feature Cards in a 2-column side-by-side grid) */}
             <div className="lg:col-span-7">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+              <div className="grid grid-cols-2 gap-2 sm:gap-4">
                 {WHY_CHOOSE_US.map((item, index) => {
                   const Icon = item.icon;
                   const cardThemes = [
@@ -450,15 +450,15 @@ export function AboutPage() {
                         delay: index * 0.04,
                         ease: [0.22, 1, 0.36, 1],
                       }}
-                      className={`p-3.5 sm:p-4 rounded-xl bg-[#F6F9FC] border border-[#D4DFEE] ${theme.borderHover} ${theme.shadow} hover:-translate-y-0.5 transition-all`}
+                      className={`p-2.5 sm:p-4 rounded-xl bg-[#F6F9FC] border border-[#D4DFEE] ${theme.borderHover} ${theme.shadow} hover:-translate-y-0.5 transition-all flex flex-col justify-start`}
                     >
-                      <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg ${theme.iconBg} ${theme.iconColor} flex items-center justify-center mb-2.5 shadow-2xs`}>
-                        <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5" strokeWidth={2} />
+                      <div className={`w-7 h-7 sm:w-9 sm:h-9 rounded-lg ${theme.iconBg} ${theme.iconColor} flex items-center justify-center mb-1.5 sm:mb-2.5 shadow-2xs`}>
+                        <Icon className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5" strokeWidth={2} />
                       </div>
-                      <h3 className="font-serif text-sm sm:text-base font-semibold text-[#0B1D3A] mb-1">
+                      <h3 className="font-serif text-xs sm:text-base font-semibold text-[#0B1D3A] mb-1 leading-snug">
                         {item.title}
                       </h3>
-                      <p className="text-xs text-[#485A72] leading-relaxed">
+                      <p className="text-[11px] sm:text-xs text-[#485A72] leading-snug sm:leading-relaxed">
                         {item.description}
                       </p>
                     </motion.div>
@@ -473,9 +473,9 @@ export function AboutPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-5 flex flex-col items-center justify-center"
+              className="lg:col-span-5 flex flex-col items-center justify-center pt-2 sm:pt-0"
             >
-              <div className="relative w-full max-w-[320px] sm:max-w-[340px] aspect-[9/16] rounded-2xl overflow-hidden shadow-xl border-2 border-[#D4DFEE] bg-[#0B1D3A] group">
+              <div className="relative w-full max-w-[260px] sm:max-w-[340px] aspect-[9/16] rounded-2xl overflow-hidden shadow-xl border-2 border-[#D4DFEE] bg-[#0B1D3A] group">
                 <video
                   ref={videoRef}
                   autoPlay
