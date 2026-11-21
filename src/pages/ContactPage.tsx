@@ -1,6 +1,6 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, type Variants } from 'motion/react';
 import {
   MapPin,
   Phone,
@@ -16,10 +16,88 @@ import {
   ShieldCheck,
   Truck,
   Scissors,
+  Quote,
 } from 'lucide-react';
 import { PRODUCTS, STORE_INFO } from '../data/catalog';
 import { PageTransition } from '../components/PageTransition';
 import { useLanguage } from '../context/LanguageContext';
+
+const BRAND_QUOTE_WORDS = [
+  'Quality',
+  'Materials.',
+  'Strong',
+  'Foundations.',
+  'Beautiful',
+  'Homes.',
+];
+
+const quotationContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const logoVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.92 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.65, ease: 'easeOut' },
+  },
+};
+
+const shopNameVariants: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' },
+  },
+};
+
+const quoteMarkVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.75 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.45, ease: 'easeOut' },
+  },
+};
+
+const quoteContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 10, filter: 'blur(3px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.45, ease: 'easeOut' },
+  },
+};
+
+const supportingTextVariants: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, delay: 0.2, ease: 'easeOut' },
+  },
+};
 
 interface EnquiryFormState {
   name: string;
@@ -648,6 +726,76 @@ export function ContactPage() {
                   </div>
                 </div>
               </div>
+
+              {/* Elegant Minimal Brand Quotation Section (Balances Branch Office on Left) */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.2 }}
+                variants={quotationContainerVariants}
+                className="pt-6 sm:pt-8 lg:pt-10 pb-4 flex flex-col items-center justify-center text-center select-none"
+              >
+                {/* 1. Actual Shop Logo - Smooth Fade In */}
+                <motion.div variants={logoVariants} className="mb-3 sm:mb-4">
+                  <img
+                    src={STORE_INFO.logo}
+                    alt="Sri Ganesh Plywoods & Hardware"
+                    referrerPolicy="no-referrer"
+                    className="h-14 sm:h-16 lg:h-18 w-auto object-contain filter drop-shadow-[0_4px_16px_rgba(14,77,164,0.12)] transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                  />
+                </motion.div>
+
+                {/* 2. Exact Shop Name - Subtle Upward Animation */}
+                <motion.div variants={shopNameVariants} className="mb-4 sm:mb-5 space-y-1">
+                  <h4 className="font-serif font-bold text-lg sm:text-xl lg:text-2xl text-[#0B1D3A] tracking-tight">
+                    Sri Ganesh Plywoods &amp; Hardware
+                  </h4>
+                  <div className="flex items-center justify-center gap-2 text-xs text-[#0E4DA4] font-medium tracking-wider uppercase">
+                    <span className="w-5 sm:w-7 h-[1.5px] bg-[#0E4DA4]/30 rounded-full" />
+                    <span>Namakkal · Est. 1998</span>
+                    <span className="w-5 sm:w-7 h-[1.5px] bg-[#0E4DA4]/30 rounded-full" />
+                  </div>
+                </motion.div>
+
+                {/* 3. Large Decorative Quotation Mark */}
+                <motion.div
+                  variants={quoteMarkVariants}
+                  className="text-[#0E4DA4]/30 select-none mb-1 sm:mb-2"
+                  aria-hidden="true"
+                >
+                  <Quote className="w-8 h-8 sm:w-10 sm:h-10 fill-[#0E4DA4]/15 rotate-180" />
+                </motion.div>
+
+                {/* 4. Quote - Word by Word Appearance */}
+                <motion.div
+                  variants={quoteContainerVariants}
+                  className="font-serif text-lg sm:text-2xl lg:text-3xl font-semibold text-[#0B1D3A] tracking-tight leading-snug sm:leading-snug max-w-lg mb-3 [text-wrap:balance]"
+                >
+                  {BRAND_QUOTE_WORDS.map((word, idx) => {
+                    const isAccent = word === 'Foundations.' || word === 'Homes.';
+                    return (
+                      <motion.span
+                        key={`${word}-${idx}`}
+                        variants={wordVariants}
+                        className={`inline-block mr-[0.28em] last:mr-0 ${
+                          isAccent ? 'text-[#0E4DA4]' : 'text-[#0B1D3A]'
+                        }`}
+                      >
+                        {word}
+                      </motion.span>
+                    );
+                  })}
+                </motion.div>
+
+                {/* 5. Supporting Text - Fades In Afterward */}
+                <motion.p
+                  variants={supportingTextVariants}
+                  className="text-xs sm:text-sm lg:text-base text-[#485A72] leading-relaxed max-w-md font-normal"
+                >
+                  The right choice for every space, from foundation to finishing.
+                </motion.p>
+              </motion.div>
             </motion.div>
           </div>
         </div>
