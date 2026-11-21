@@ -233,16 +233,16 @@ export function ContactPage() {
       </section>
 
       {/* Main Two-Column Contact Section */}
-      <section className="py-6 sm:py-12 lg:py-18 bg-[#F6F9FC]">
+      <section className="py-6 sm:py-12 lg:py-16 bg-[#F6F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-10 items-stretch">
             {/* Left Column: Direct Contact, Head Office & Branch Office */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.12 }}
               transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-5 space-y-3 sm:space-y-3.5"
+              className="lg:col-span-5 flex flex-col justify-between space-y-3 sm:space-y-3.5"
             >
               {/* Primary Contact Desk Card */}
               <div className="bg-white rounded-xl border border-[#D4DFEE] p-3.5 sm:p-5 space-y-3 sm:space-y-3.5">
@@ -413,15 +413,15 @@ export function ContactPage() {
               ))}
             </motion.div>
 
-            {/* Right Column: Contact Enquiry Form + Namakkal Map Preview */}
+            {/* Right Column: Contact Enquiry Form */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.12 }}
               transition={{ duration: 0.45, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-7 space-y-6"
+              className="lg:col-span-7 flex flex-col"
             >
-              <div className="bg-white rounded-xl border border-[#D4DFEE] p-6 sm:p-9">
+              <div className="bg-white rounded-xl border border-[#D4DFEE] p-5 sm:p-7 h-full flex flex-col justify-between">
                 {submitted ? (
                   <div className="py-8 text-center max-w-md mx-auto space-y-4">
                     <div className="w-14 h-14 rounded-full bg-[#EAF7EE] text-[#16803C] flex items-center justify-center mx-auto shadow-xs">
@@ -673,78 +673,78 @@ export function ContactPage() {
                   </>
                 )}
               </div>
-
-              {/* Elegant Minimal Brand Quotation Section (Balances Branch Office on Left) */}
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.2 }}
-                variants={quotationContainerVariants}
-                className="pt-6 sm:pt-8 lg:pt-10 pb-4 flex flex-col items-center justify-center text-center select-none"
-              >
-                {/* 1. Actual Shop Logo - Smooth Fade In */}
-                <motion.div variants={logoVariants} className="mb-3 sm:mb-4">
-                  <img
-                    src={STORE_INFO.logo}
-                    alt="Sri Ganesh Plywoods & Hardware"
-                    referrerPolicy="no-referrer"
-                    className="h-14 sm:h-16 lg:h-18 w-auto object-contain filter drop-shadow-[0_4px_16px_rgba(14,77,164,0.12)] transition-transform duration-300 hover:scale-105"
-                    loading="lazy"
-                  />
-                </motion.div>
-
-                {/* 2. Exact Shop Name - Subtle Upward Animation */}
-                <motion.div variants={shopNameVariants} className="mb-4 sm:mb-5 space-y-1">
-                  <h4 className="font-serif font-bold text-lg sm:text-xl lg:text-2xl text-[#0B1D3A] tracking-tight">
-                    Sri Ganesh Plywoods &amp; Hardware
-                  </h4>
-                  <div className="flex items-center justify-center gap-2 text-xs text-[#0E4DA4] font-medium tracking-wider uppercase">
-                    <span className="w-5 sm:w-7 h-[1.5px] bg-[#0E4DA4]/30 rounded-full" />
-                    <span>Namakkal · Est. 1998</span>
-                    <span className="w-5 sm:w-7 h-[1.5px] bg-[#0E4DA4]/30 rounded-full" />
-                  </div>
-                </motion.div>
-
-                {/* 3. Large Decorative Quotation Mark */}
-                <motion.div
-                  variants={quoteMarkVariants}
-                  className="text-[#0E4DA4]/30 select-none mb-1 sm:mb-2"
-                  aria-hidden="true"
-                >
-                  <Quote className="w-8 h-8 sm:w-10 sm:h-10 fill-[#0E4DA4]/15 rotate-180" />
-                </motion.div>
-
-                {/* 4. Quote - Word by Word Appearance */}
-                <motion.div
-                  variants={quoteContainerVariants}
-                  className="font-serif text-lg sm:text-2xl lg:text-3xl font-semibold text-[#0B1D3A] tracking-tight leading-snug sm:leading-snug max-w-lg mb-3 [text-wrap:balance]"
-                >
-                  {BRAND_QUOTE_WORDS.map((word, idx) => {
-                    const isAccent = word === 'Foundations.' || word === 'Homes.';
-                    return (
-                      <motion.span
-                        key={`${word}-${idx}`}
-                        variants={wordVariants}
-                        className={`inline-block mr-[0.28em] last:mr-0 ${
-                          isAccent ? 'text-[#0E4DA4]' : 'text-[#0B1D3A]'
-                        }`}
-                      >
-                        {word}
-                      </motion.span>
-                    );
-                  })}
-                </motion.div>
-
-                {/* 5. Supporting Text - Fades In Afterward */}
-                <motion.p
-                  variants={supportingTextVariants}
-                  className="text-xs sm:text-sm lg:text-base text-[#485A72] leading-relaxed max-w-md font-normal"
-                >
-                  The right choice for every space, from foundation to finishing.
-                </motion.p>
-              </motion.div>
             </motion.div>
           </div>
+
+          {/* Elegant Minimal Brand Quotation Section - Centered across page (Equal Left & Right) */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={quotationContainerVariants}
+            className="mt-10 sm:mt-14 max-w-3xl mx-auto flex flex-col items-center justify-center text-center select-none"
+          >
+            {/* 1. Actual Shop Logo - Smooth Fade In */}
+            <motion.div variants={logoVariants} className="mb-3">
+              <img
+                src={STORE_INFO.logo}
+                alt="Sri Ganesh Plywoods & Hardware"
+                referrerPolicy="no-referrer"
+                className="h-14 sm:h-16 w-auto object-contain filter drop-shadow-[0_4px_16px_rgba(14,77,164,0.12)] transition-transform duration-300 hover:scale-105"
+                loading="lazy"
+              />
+            </motion.div>
+
+            {/* 2. Exact Shop Name - Subtle Upward Animation */}
+            <motion.div variants={shopNameVariants} className="mb-3 sm:mb-4 space-y-1">
+              <h4 className="font-serif font-bold text-lg sm:text-xl lg:text-2xl text-[#0B1D3A] tracking-tight">
+                Sri Ganesh Plywoods &amp; Hardware
+              </h4>
+              <div className="flex items-center justify-center gap-2 text-xs text-[#0E4DA4] font-medium tracking-wider uppercase">
+                <span className="w-5 sm:w-7 h-[1.5px] bg-[#0E4DA4]/30 rounded-full" />
+                <span>Namakkal · Est. 1998</span>
+                <span className="w-5 sm:w-7 h-[1.5px] bg-[#0E4DA4]/30 rounded-full" />
+              </div>
+            </motion.div>
+
+            {/* 3. Large Decorative Quotation Mark */}
+            <motion.div
+              variants={quoteMarkVariants}
+              className="text-[#0E4DA4]/30 select-none mb-1 sm:mb-1.5"
+              aria-hidden="true"
+            >
+              <Quote className="w-8 h-8 sm:w-9 sm:h-9 fill-[#0E4DA4]/15 rotate-180" />
+            </motion.div>
+
+            {/* 4. Quote - Word by Word Appearance */}
+            <motion.div
+              variants={quoteContainerVariants}
+              className="font-serif text-lg sm:text-2xl lg:text-3xl font-semibold text-[#0B1D3A] tracking-tight leading-snug sm:leading-snug max-w-2xl mb-2 sm:mb-2.5 [text-wrap:balance]"
+            >
+              {BRAND_QUOTE_WORDS.map((word, idx) => {
+                const isAccent = word === 'Foundations.' || word === 'Homes.';
+                return (
+                  <motion.span
+                    key={`${word}-${idx}`}
+                    variants={wordVariants}
+                    className={`inline-block mr-[0.28em] last:mr-0 ${
+                      isAccent ? 'text-[#0E4DA4]' : 'text-[#0B1D3A]'
+                    }`}
+                  >
+                    {word}
+                  </motion.span>
+                );
+              })}
+            </motion.div>
+
+            {/* 5. Supporting Text - Fades In Afterward */}
+            <motion.p
+              variants={supportingTextVariants}
+              className="text-xs sm:text-sm lg:text-base text-[#485A72] leading-relaxed max-w-md font-normal"
+            >
+              The right choice for every space, from foundation to finishing.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
     </PageTransition>
