@@ -233,16 +233,16 @@ export function ContactPage() {
       </section>
 
       {/* Main Two-Column Contact Section */}
-      <section className="py-6 sm:py-12 lg:py-16 bg-[#F6F9FC]">
+      <section className="py-6 sm:py-12 lg:py-18 bg-[#F6F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-10 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-10 items-start">
             {/* Left Column: Direct Contact, Head Office & Branch Office */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.12 }}
               transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-5 flex flex-col justify-between space-y-3 sm:space-y-3.5"
+              className="lg:col-span-5 space-y-3 sm:space-y-3.5"
             >
               {/* Primary Contact Desk Card */}
               <div className="bg-white rounded-xl border border-[#D4DFEE] p-3.5 sm:p-5 space-y-3 sm:space-y-3.5">
@@ -413,22 +413,22 @@ export function ContactPage() {
               ))}
             </motion.div>
 
-            {/* Right Column: Contact Enquiry Form */}
+            {/* Right Column: Contact Enquiry Form + Namakkal Map Preview */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.12 }}
               transition={{ duration: 0.45, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-7 flex flex-col"
+              className="lg:col-span-7 space-y-4 sm:space-y-5"
             >
-              <div className="bg-white rounded-xl border border-[#D4DFEE] p-5 sm:p-7 h-full flex flex-col justify-between">
+              <div className="bg-white rounded-xl border border-[#D4DFEE] p-4 sm:p-6">
                 {submitted ? (
-                  <div className="py-8 text-center max-w-md mx-auto space-y-4">
-                    <div className="w-14 h-14 rounded-full bg-[#EAF7EE] text-[#16803C] flex items-center justify-center mx-auto shadow-xs">
-                      <CheckCircle2 className="w-7 h-7" />
+                  <div className="py-6 text-center max-w-md mx-auto space-y-3">
+                    <div className="w-12 h-12 rounded-full bg-[#EAF7EE] text-[#16803C] flex items-center justify-center mx-auto shadow-xs">
+                      <CheckCircle2 className="w-6 h-6" />
                     </div>
                     <div>
-                      <h2 className="font-serif text-2xl font-semibold text-[#0B1D3A] mb-1.5">
+                      <h2 className="font-serif text-xl font-semibold text-[#0B1D3A] mb-1">
                         {language === 'ta' ? 'விசாரணை பெறப்பட்டது!' : 'Enquiry Received!'}
                       </h2>
                       <p className="text-xs font-semibold text-[#16803C] tracking-wide uppercase">
@@ -461,7 +461,7 @@ export function ContactPage() {
                     </p>
 
                     {form.email && (
-                      <div className="p-3 rounded-lg bg-[#F8FAFD] border border-[#D4DFEE] text-xs text-[#485A72]">
+                      <div className="p-2.5 rounded-lg bg-[#F8FAFD] border border-[#D4DFEE] text-xs text-[#485A72]">
                         <span className="font-medium text-[#0B1D3A]">
                           {language === 'ta' ? 'உறுதிப்படுத்தல் மின்னஞ்சல்:' : 'Confirmation Email:'}
                         </span>{' '}
@@ -471,12 +471,12 @@ export function ContactPage() {
                       </div>
                     )}
 
-                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
                       <a
                         href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#15803D] hover:bg-[#166534] rounded-lg transition-colors"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-[#15803D] hover:bg-[#166534] rounded-lg transition-colors"
                       >
                         <MessageCircle className="w-4 h-4" />
                         <span>{language === 'ta' ? 'வாட்ஸ்அப்பில் தொடர்புகொள்ள' : 'Quick WhatsApp Chat'}</span>
@@ -494,7 +494,7 @@ export function ContactPage() {
                             message: '',
                           });
                         }}
-                        className="w-full sm:w-auto px-5 py-2.5 text-xs font-semibold text-[#0B1D3A] bg-[#F6F9FC] border border-[#D4DFEE] hover:bg-[#EAF1FA] rounded-lg transition-colors cursor-pointer"
+                        className="w-full sm:w-auto px-4 py-2 text-xs font-semibold text-[#0B1D3A] bg-[#F6F9FC] border border-[#D4DFEE] hover:bg-[#EAF1FA] rounded-lg transition-colors cursor-pointer"
                       >
                         {language === 'ta' ? 'மற்றொரு விசாரணையை அனுப்ப' : 'Send Another Enquiry'}
                       </button>
@@ -502,11 +502,11 @@ export function ContactPage() {
                   </div>
                 ) : (
                   <>
-                    <div className="mb-7">
-                      <h2 className="font-serif text-2xl font-semibold text-[#0B1D3A] mb-1.5">
+                    <div className="mb-4 sm:mb-5">
+                      <h2 className="font-serif text-lg sm:text-xl font-semibold text-[#0B1D3A] mb-1">
                         Send a Material Enquiry
                       </h2>
-                      <p className="text-sm text-[#485A72]">
+                      <p className="text-xs sm:text-sm text-[#485A72]">
                         Share your plywood grades, laminate codes, paint requirements, or hardware
                         list for a quick showroom quotation.
                       </p>
@@ -515,18 +515,18 @@ export function ContactPage() {
                     {error && (
                       <div
                         role="alert"
-                        className="mb-6 p-3.5 rounded-lg bg-[#FEF2F2] border border-[#FECACA] text-sm text-[#B91C1C]"
+                        className="mb-4 p-3 rounded-lg bg-[#FEF2F2] border border-[#FECACA] text-xs sm:text-sm text-[#B91C1C]"
                       >
                         {error}
                       </div>
                     )}
 
-                    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4" noValidate>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                         <div>
                           <label
                             htmlFor="enquiry-name"
-                            className="block text-sm font-medium text-[#0B1D3A] mb-1.5"
+                            className="block text-xs sm:text-sm font-medium text-[#0B1D3A] mb-1"
                           >
                             Full Name <span className="text-[#0E4DA4]">*</span>
                           </label>
@@ -537,14 +537,14 @@ export function ContactPage() {
                             value={form.name}
                             onChange={(e) => setForm({ ...form, name: e.target.value })}
                             placeholder="Your full name"
-                            className="w-full px-3.5 py-2.5 text-sm bg-[#F6F9FC] text-[#0B1D3A] placeholder:text-[#7386A0] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors"
+                            className="w-full px-3 py-2 text-xs sm:text-sm bg-[#F6F9FC] text-[#0B1D3A] placeholder:text-[#7386A0] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors"
                           />
                         </div>
 
                         <div>
                           <label
                             htmlFor="enquiry-phone"
-                            className="block text-sm font-medium text-[#0B1D3A] mb-1.5"
+                            className="block text-xs sm:text-sm font-medium text-[#0B1D3A] mb-1"
                           >
                             Phone Number <span className="text-[#0E4DA4]">*</span>
                           </label>
@@ -555,16 +555,16 @@ export function ContactPage() {
                             value={form.phone}
                             onChange={(e) => setForm({ ...form, phone: e.target.value })}
                             placeholder="+91 98XXX XXXXX"
-                            className="w-full px-3.5 py-2.5 text-sm bg-[#F6F9FC] text-[#0B1D3A] placeholder:text-[#7386A0] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors tabular-nums"
+                            className="w-full px-3 py-2 text-xs sm:text-sm bg-[#F6F9FC] text-[#0B1D3A] placeholder:text-[#7386A0] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors tabular-nums"
                           />
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                         <div>
                           <label
                             htmlFor="enquiry-email"
-                            className="block text-sm font-medium text-[#0B1D3A] mb-1.5"
+                            className="block text-xs sm:text-sm font-medium text-[#0B1D3A] mb-1"
                           >
                             Email Address
                           </label>
@@ -574,14 +574,14 @@ export function ContactPage() {
                             value={form.email}
                             onChange={(e) => setForm({ ...form, email: e.target.value })}
                             placeholder="you@example.com"
-                            className="w-full px-3.5 py-2.5 text-sm bg-[#F6F9FC] text-[#0B1D3A] placeholder:text-[#7386A0] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors"
+                            className="w-full px-3 py-2 text-xs sm:text-sm bg-[#F6F9FC] text-[#0B1D3A] placeholder:text-[#7386A0] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors"
                           />
                         </div>
 
                         <div>
                           <label
                             htmlFor="enquiry-branch"
-                            className="block text-sm font-medium text-[#0B1D3A] mb-1.5"
+                            className="block text-xs sm:text-sm font-medium text-[#0B1D3A] mb-1"
                           >
                             Preferred Showroom
                           </label>
@@ -594,7 +594,7 @@ export function ContactPage() {
                                 branchPreference: e.target.value as EnquiryFormState['branchPreference'],
                               })
                             }
-                            className="w-full px-3.5 py-2.5 text-sm bg-[#F6F9FC] text-[#0B1D3A] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors"
+                            className="w-full px-3 py-2 text-xs sm:text-sm bg-[#F6F9FC] text-[#0B1D3A] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors"
                           >
                             <option value="Head Office (Mohanur Main Road)">
                               Head Office (Mohanur Main Road)
@@ -609,7 +609,7 @@ export function ContactPage() {
                       <div>
                         <label
                           htmlFor="enquiry-product"
-                          className="block text-sm font-medium text-[#0B1D3A] mb-1.5"
+                          className="block text-xs sm:text-sm font-medium text-[#0B1D3A] mb-1"
                         >
                           Product / Brand Interest
                         </label>
@@ -619,7 +619,7 @@ export function ContactPage() {
                           onChange={(e) =>
                             setForm({ ...form, productInterest: e.target.value })
                           }
-                          className="w-full px-3.5 py-2.5 text-sm bg-[#F6F9FC] text-[#0B1D3A] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors"
+                          className="w-full px-3 py-2 text-xs sm:text-sm bg-[#F6F9FC] text-[#0B1D3A] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors"
                         >
                           {productOptions.map((option) => (
                             <option key={option} value={option}>
@@ -632,29 +632,29 @@ export function ContactPage() {
                       <div>
                         <label
                           htmlFor="enquiry-message"
-                          className="block text-sm font-medium text-[#0B1D3A] mb-1.5"
+                          className="block text-xs sm:text-sm font-medium text-[#0B1D3A] mb-1"
                         >
                           Project Details &amp; Quantities <span className="text-[#0E4DA4]">*</span>
                         </label>
                         <textarea
                           id="enquiry-message"
-                          rows={5}
+                          rows={3}
                           required
                           value={form.message}
                           onChange={(e) => setForm({ ...form, message: e.target.value })}
                           placeholder="Tell us the approximate sheet count, thickness (e.g. 19 mm BWP plywood), paint quantity, or hardware list..."
-                          className="w-full px-3.5 py-2.5 text-sm bg-[#F6F9FC] text-[#0B1D3A] placeholder:text-[#7386A0] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors resize-y"
+                          className="w-full px-3 py-2 text-xs sm:text-sm bg-[#F6F9FC] text-[#0B1D3A] placeholder:text-[#7386A0] border border-[#D4DFEE] rounded-lg focus:bg-white focus:outline-none focus:border-[#0E4DA4] transition-colors resize-y"
                         />
                       </div>
 
-                      <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <div className="pt-1.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <p className="text-xs text-[#5E718B]">
                           Direct assistance by {STORE_INFO.contactPerson} &amp; SGPH Showroom Desk.
                         </p>
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-[#F6F9FC] bg-[#0E4DA4] rounded-lg hover:bg-[#093678] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed shadow-xs"
+                          className="inline-flex items-center justify-center gap-2 px-4.5 py-2.5 text-xs sm:text-sm font-medium text-[#F6F9FC] bg-[#0E4DA4] rounded-lg hover:bg-[#093678] active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed shadow-xs"
                         >
                           {isSubmitting ? (
                             <>
@@ -673,78 +673,78 @@ export function ContactPage() {
                   </>
                 )}
               </div>
+
+              {/* Elegant Minimal Brand Quotation Section (Balances Branch Office on Left) */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.2 }}
+                variants={quotationContainerVariants}
+                className="pt-4 sm:pt-6 pb-2 flex flex-col items-center justify-center text-center select-none"
+              >
+                {/* 1. Actual Shop Logo - Smooth Fade In */}
+                <motion.div variants={logoVariants} className="mb-2 sm:mb-2.5">
+                  <img
+                    src={STORE_INFO.logo}
+                    alt="Sri Ganesh Plywoods & Hardware"
+                    referrerPolicy="no-referrer"
+                    className="h-10 sm:h-12 lg:h-13 w-auto object-contain filter drop-shadow-[0_4px_16px_rgba(14,77,164,0.12)] transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                  />
+                </motion.div>
+
+                {/* 2. Exact Shop Name - Subtle Upward Animation */}
+                <motion.div variants={shopNameVariants} className="mb-2.5 sm:mb-3 space-y-0.5">
+                  <h4 className="font-serif font-bold text-base sm:text-lg text-[#0B1D3A] tracking-tight">
+                    Sri Ganesh Plywoods &amp; Hardware
+                  </h4>
+                  <div className="flex items-center justify-center gap-2 text-[11px] sm:text-xs text-[#0E4DA4] font-medium tracking-wider uppercase">
+                    <span className="w-4 sm:w-5 h-[1.5px] bg-[#0E4DA4]/30 rounded-full" />
+                    <span>Namakkal · Est. 1998</span>
+                    <span className="w-4 sm:w-5 h-[1.5px] bg-[#0E4DA4]/30 rounded-full" />
+                  </div>
+                </motion.div>
+
+                {/* 3. Large Decorative Quotation Mark */}
+                <motion.div
+                  variants={quoteMarkVariants}
+                  className="text-[#0E4DA4]/30 select-none mb-1"
+                  aria-hidden="true"
+                >
+                  <Quote className="w-6 h-6 sm:w-7 sm:h-7 fill-[#0E4DA4]/15 rotate-180" />
+                </motion.div>
+
+                {/* 4. Quote - Word by Word Appearance */}
+                <motion.div
+                  variants={quoteContainerVariants}
+                  className="font-serif text-base sm:text-xl font-semibold text-[#0B1D3A] tracking-tight leading-snug sm:leading-snug max-w-md mb-2 [text-wrap:balance]"
+                >
+                  {BRAND_QUOTE_WORDS.map((word, idx) => {
+                    const isAccent = word === 'Foundations.' || word === 'Homes.';
+                    return (
+                      <motion.span
+                        key={`${word}-${idx}`}
+                        variants={wordVariants}
+                        className={`inline-block mr-[0.28em] last:mr-0 ${
+                          isAccent ? 'text-[#0E4DA4]' : 'text-[#0B1D3A]'
+                        }`}
+                      >
+                        {word}
+                      </motion.span>
+                    );
+                  })}
+                </motion.div>
+
+                {/* 5. Supporting Text - Fades In Afterward */}
+                <motion.p
+                  variants={supportingTextVariants}
+                  className="text-xs sm:text-sm text-[#485A72] leading-relaxed max-w-sm font-normal"
+                >
+                  The right choice for every space, from foundation to finishing.
+                </motion.p>
+              </motion.div>
             </motion.div>
           </div>
-
-          {/* Elegant Minimal Brand Quotation Section - Centered across page (Equal Left & Right) */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }}
-            variants={quotationContainerVariants}
-            className="mt-10 sm:mt-14 max-w-3xl mx-auto flex flex-col items-center justify-center text-center select-none"
-          >
-            {/* 1. Actual Shop Logo - Smooth Fade In */}
-            <motion.div variants={logoVariants} className="mb-3">
-              <img
-                src={STORE_INFO.logo}
-                alt="Sri Ganesh Plywoods & Hardware"
-                referrerPolicy="no-referrer"
-                className="h-14 sm:h-16 w-auto object-contain filter drop-shadow-[0_4px_16px_rgba(14,77,164,0.12)] transition-transform duration-300 hover:scale-105"
-                loading="lazy"
-              />
-            </motion.div>
-
-            {/* 2. Exact Shop Name - Subtle Upward Animation */}
-            <motion.div variants={shopNameVariants} className="mb-3 sm:mb-4 space-y-1">
-              <h4 className="font-serif font-bold text-lg sm:text-xl lg:text-2xl text-[#0B1D3A] tracking-tight">
-                Sri Ganesh Plywoods &amp; Hardware
-              </h4>
-              <div className="flex items-center justify-center gap-2 text-xs text-[#0E4DA4] font-medium tracking-wider uppercase">
-                <span className="w-5 sm:w-7 h-[1.5px] bg-[#0E4DA4]/30 rounded-full" />
-                <span>Namakkal · Est. 1998</span>
-                <span className="w-5 sm:w-7 h-[1.5px] bg-[#0E4DA4]/30 rounded-full" />
-              </div>
-            </motion.div>
-
-            {/* 3. Large Decorative Quotation Mark */}
-            <motion.div
-              variants={quoteMarkVariants}
-              className="text-[#0E4DA4]/30 select-none mb-1 sm:mb-1.5"
-              aria-hidden="true"
-            >
-              <Quote className="w-8 h-8 sm:w-9 sm:h-9 fill-[#0E4DA4]/15 rotate-180" />
-            </motion.div>
-
-            {/* 4. Quote - Word by Word Appearance */}
-            <motion.div
-              variants={quoteContainerVariants}
-              className="font-serif text-lg sm:text-2xl lg:text-3xl font-semibold text-[#0B1D3A] tracking-tight leading-snug sm:leading-snug max-w-2xl mb-2 sm:mb-2.5 [text-wrap:balance]"
-            >
-              {BRAND_QUOTE_WORDS.map((word, idx) => {
-                const isAccent = word === 'Foundations.' || word === 'Homes.';
-                return (
-                  <motion.span
-                    key={`${word}-${idx}`}
-                    variants={wordVariants}
-                    className={`inline-block mr-[0.28em] last:mr-0 ${
-                      isAccent ? 'text-[#0E4DA4]' : 'text-[#0B1D3A]'
-                    }`}
-                  >
-                    {word}
-                  </motion.span>
-                );
-              })}
-            </motion.div>
-
-            {/* 5. Supporting Text - Fades In Afterward */}
-            <motion.p
-              variants={supportingTextVariants}
-              className="text-xs sm:text-sm lg:text-base text-[#485A72] leading-relaxed max-w-md font-normal"
-            >
-              The right choice for every space, from foundation to finishing.
-            </motion.p>
-          </motion.div>
         </div>
       </section>
     </PageTransition>
