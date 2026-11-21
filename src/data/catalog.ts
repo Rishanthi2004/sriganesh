@@ -63,7 +63,7 @@ export const STORE_INFO = {
   nameLine2: 'பிளைவுட்ஸ் & ஹார்ட்வேர்ஸ்',
   nameEn: 'Sri Ganesh Plywoods & Hardwares',
   nameTa: 'ஸ்ரீ கணேஷ் பிளைவுட்ஸ் & ஹார்ட்வேர்ஸ்',
-  logo: '/assets/aistudio/Glossy_SGPH_Global_Globe_Logo_d3a0e4c9.png',
+  logo: '/assets/sgph-logo.png',
   established: '1998',
   contactPerson: 'K. Kalimuthu',
   contactPersonTa: 'கே. காளிமுத்து',
