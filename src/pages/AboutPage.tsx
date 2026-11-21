@@ -424,8 +424,8 @@ export function AboutPage() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-            {/* Left Side: Why Choose Us Details (6 Feature Cards in a 2-column side-by-side grid) */}
-            <div className="lg:col-span-7">
+            {/* Left Side (Desktop: Left, Mobile: Second): Why Choose Us Details */}
+            <div className="order-2 lg:order-1 lg:col-span-7">
               <div className="grid grid-cols-2 gap-2 sm:gap-4">
                 {WHY_CHOOSE_US.map((item, index) => {
                   const Icon = item.icon;
@@ -467,13 +467,13 @@ export function AboutPage() {
               </div>
             </div>
 
-            {/* Right Side: Instagram Reel Video Showcase */}
+            {/* Right Side (Desktop: Right, Mobile: First): Instagram Reel Video Showcase */}
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-5 flex flex-col items-center justify-center pt-2 sm:pt-0"
+              className="order-1 lg:order-2 lg:col-span-5 flex flex-col items-center justify-center pb-2 lg:pb-0"
             >
               <div className="relative w-full max-w-[260px] sm:max-w-[340px] aspect-[9/16] rounded-2xl overflow-hidden shadow-xl border-2 border-[#D4DFEE] bg-[#0B1D3A] group">
                 <video
