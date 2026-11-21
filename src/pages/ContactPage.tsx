@@ -242,32 +242,32 @@ export function ContactPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.12 }}
               transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-5 space-y-4 sm:space-y-6"
+              className="lg:col-span-5 space-y-3 sm:space-y-3.5"
             >
               {/* Primary Contact Desk Card */}
-              <div className="bg-white rounded-xl border border-[#D4DFEE] p-4 sm:p-7 space-y-4 sm:space-y-5">
-                <h2 className="font-serif text-xl font-semibold text-[#0B1D3A]">
+              <div className="bg-white rounded-xl border border-[#D4DFEE] p-3.5 sm:p-5 space-y-3 sm:space-y-3.5">
+                <h2 className="font-serif text-base sm:text-lg font-semibold text-[#0B1D3A]">
                   Direct Contact Details
                 </h2>
 
-                <div className="space-y-4 text-sm">
-                  <div className="flex items-start gap-3.5">
-                    <User className="w-5 h-5 text-[#0E4DA4] mt-0.5 shrink-0" />
+                <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm">
+                  <div className="flex items-start gap-2.5">
+                    <User className="w-4 h-4 text-[#0E4DA4] mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-medium text-[#0B1D3A]">
+                      <p className="font-medium text-[#0B1D3A] text-xs">
                         {language === 'ta' ? 'தொடர்புக்கு' : 'Contact Person'}
                       </p>
-                      <p className="text-[#485A72] mt-0.5">{t('founderName')}</p>
+                      <p className="text-[#485A72] text-xs sm:text-sm">{t('founderName')}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3.5">
-                    <Phone className="w-5 h-5 text-[#16803C] mt-0.5 shrink-0" />
-                    <div className="space-y-1">
-                      <p className="font-medium text-[#0B1D3A]">
+                  <div className="flex items-start gap-2.5">
+                    <Phone className="w-4 h-4 text-[#16803C] mt-0.5 shrink-0" />
+                    <div className="space-y-0.5">
+                      <p className="font-medium text-[#0B1D3A] text-xs">
                         {language === 'ta' ? 'முதன்மை தொலைபேசி எண்' : 'Primary Phone Number'}
                       </p>
-                      <p className="text-[#485A72] tabular-nums">
+                      <p className="text-[#485A72] tabular-nums text-xs sm:text-sm">
                         <a
                           href={STORE_INFO.phoneHref}
                           className="font-medium text-[#0B1D3A] hover:text-[#16803C] transition-colors"
@@ -278,39 +278,37 @@ export function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3.5">
-                    <Mail className="w-5 h-5 text-[#D61F26] mt-0.5 shrink-0" />
+                  <div className="flex items-start gap-2.5">
+                    <Mail className="w-4 h-4 text-[#D61F26] mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-medium text-[#0B1D3A]">Email</p>
+                      <p className="font-medium text-[#0B1D3A] text-xs">Email</p>
                       <a
                         href={`mailto:${STORE_INFO.email}`}
-                        className="text-[#485A72] hover:text-[#D61F26] transition-colors mt-0.5 inline-block break-all"
+                        className="text-[#485A72] hover:text-[#D61F26] transition-colors inline-block break-all text-xs sm:text-sm"
                       >
                         {STORE_INFO.email}
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3.5">
-                    <Clock className="w-5 h-5 text-[#0E4DA4] mt-0.5 shrink-0" />
+                  <div className="flex items-start gap-2.5">
+                    <Clock className="w-4 h-4 text-[#0E4DA4] mt-0.5 shrink-0" />
                     <div>
-                      <p className="font-medium text-[#0B1D3A]">Showroom Hours</p>
-                      <p className="text-[#485A72] tabular-nums mt-0.5">
-                        {STORE_INFO.hoursWeekday}
-                        <br />
-                        {STORE_INFO.hoursWeekend}
+                      <p className="font-medium text-[#0B1D3A] text-xs">Showroom Hours</p>
+                      <p className="text-[#485A72] tabular-nums text-xs leading-snug">
+                        {STORE_INFO.hoursWeekday} &bull; {STORE_INFO.hoursWeekend}
                       </p>
                     </div>
                   </div>
                 </div>
 
                 {/* WhatsApp Contact Button */}
-                <div className="pt-4 border-t border-[#E4EEF9]">
+                <div className="pt-2.5 sm:pt-3 border-t border-[#E4EEF9]">
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 text-sm font-medium text-white bg-[#15803D] rounded-lg hover:bg-[#166534] active:scale-[0.98] transition-all whitespace-nowrap"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-[#15803D] rounded-lg hover:bg-[#166534] active:scale-[0.98] transition-all whitespace-nowrap"
                   >
                     <MessageCircle className="w-4 h-4" />
                     <span>WhatsApp ({STORE_INFO.phoneRaw})</span>
@@ -324,10 +322,10 @@ export function ContactPage() {
                   key={office.id}
                   className="bg-white rounded-xl border border-[#D4DFEE] hover:border-[#0E4DA4]/60 transition-all duration-200 overflow-hidden shadow-xs"
                 >
-                  <div className="px-4 py-3 sm:px-5 sm:py-3.5 bg-[#F8FAFD] border-b border-[#D4DFEE] flex items-center justify-between gap-3">
+                  <div className="px-3.5 py-2 sm:px-4 sm:py-2.5 bg-[#F8FAFD] border-b border-[#D4DFEE] flex items-center justify-between gap-3">
                     <div className="flex items-center gap-2 min-w-0">
-                      <MapPin className="w-4 h-4 text-[#0E4DA4] shrink-0" />
-                      <h3 className="font-serif text-base font-semibold text-[#0B1D3A] truncate">
+                      <MapPin className="w-3.5 h-3.5 text-[#0E4DA4] shrink-0" />
+                      <h3 className="font-serif text-sm sm:text-base font-semibold text-[#0B1D3A] truncate">
                         {office.label}
                       </h3>
                     </div>
@@ -339,9 +337,9 @@ export function ContactPage() {
                     </a>
                   </div>
 
-                  <div className="p-4 sm:p-5 space-y-3">
+                  <div className="p-3 sm:p-3.5 space-y-2">
                     {/* Address Lines */}
-                    <p className="text-xs sm:text-sm text-[#485A72] leading-relaxed">
+                    <p className="text-xs text-[#485A72] leading-snug">
                       {office.addressLines.map((line) => (
                         <span key={line} className="block">
                           {line}
@@ -349,7 +347,7 @@ export function ContactPage() {
                       ))}
                     </p>
 
-                    <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-[#5E718B]">
+                    <div className="flex items-center gap-1.5 text-[11px] text-[#5E718B]">
                       <span className="font-medium text-[#0B1D3A]">
                         {language === 'ta' ? 'அடையாளம்:' : 'Landmark:'}
                       </span>
@@ -362,7 +360,7 @@ export function ContactPage() {
                         href={office.directionsUrl || office.mapsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block relative w-full h-20 sm:h-24 cursor-pointer"
+                        className="block relative w-full h-16 sm:h-20 cursor-pointer"
                         aria-label={`Open Google Maps directions to ${office.label}`}
                         title={`Touch map for directions to ${office.label}`}
                       >
@@ -373,12 +371,12 @@ export function ContactPage() {
                           loading="lazy"
                         />
                         {/* Compact Visual Overlay */}
-                        <div className="absolute inset-0 bg-[#0B1D3A]/10 group-hover:bg-[#0B1D3A]/25 transition-colors flex items-end justify-between p-2 pointer-events-none">
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold text-white bg-[#0B1D3A]/90 backdrop-blur-xs shadow-xs">
+                        <div className="absolute inset-0 bg-[#0B1D3A]/10 group-hover:bg-[#0B1D3A]/25 transition-colors flex items-end justify-between p-1.5 pointer-events-none">
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-semibold text-white bg-[#0B1D3A]/90 backdrop-blur-xs shadow-xs">
                             <MapPin className="w-2.5 h-2.5 text-[#16803C]" />
                             <span>{office.label}</span>
                           </span>
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold text-white bg-[#0E4DA4] shadow-xs group-hover:scale-105 transition-transform">
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-semibold text-white bg-[#0E4DA4] shadow-xs group-hover:scale-105 transition-transform">
                             <Navigation className="w-2.5 h-2.5 text-white" />
                             <span>{language === 'ta' ? 'வழித்தடம்' : 'Directions ↗'}</span>
                           </span>
@@ -392,19 +390,19 @@ export function ContactPage() {
                         href={office.directionsUrl || office.mapsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold text-white bg-[#0E4DA4] hover:bg-[#093678] rounded-lg transition-all shadow-xs text-center"
+                        className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-white bg-[#0E4DA4] hover:bg-[#093678] rounded-md transition-all shadow-xs text-center"
                       >
-                        <Navigation className="w-3.5 h-3.5 shrink-0" />
+                        <Navigation className="w-3 h-3 shrink-0" />
                         <span className="truncate">
                           {language === 'ta' ? 'வழித்தடம்' : 'Directions'}
                         </span>
-                        <ExternalLink className="w-3 h-3 shrink-0 opacity-80 hidden sm:inline" />
+                        <ExternalLink className="w-2.5 h-2.5 shrink-0 opacity-80 hidden sm:inline" />
                       </a>
                       <a
                         href={office.phoneHref}
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-medium text-[#0B1D3A] bg-[#F6F9FC] border border-[#D4DFEE] hover:bg-[#EAF1FA] rounded-lg transition-colors text-center"
+                        className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[#0B1D3A] bg-[#F6F9FC] border border-[#D4DFEE] hover:bg-[#EAF1FA] rounded-md transition-colors text-center"
                       >
-                        <Phone className="w-3.5 h-3.5 text-[#16803C] shrink-0" />
+                        <Phone className="w-3 h-3 text-[#16803C] shrink-0" />
                         <span className="truncate">
                           {language === 'ta' ? 'அழைக்க' : 'Call'}
                         </span>
