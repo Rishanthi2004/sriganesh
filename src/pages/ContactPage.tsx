@@ -13,9 +13,6 @@ import {
   Send,
   Loader2,
   Navigation,
-  ShieldCheck,
-  Truck,
-  Scissors,
   Quote,
 } from 'lucide-react';
 import { PRODUCTS, STORE_INFO } from '../data/catalog';
@@ -677,54 +674,6 @@ export function ContactPage() {
                     </form>
                   </>
                 )}
-              </div>
-
-              {/* Showroom Direct Services & Assurance */}
-              <div className="bg-white rounded-xl border border-[#D4DFEE] p-5 sm:p-7 shadow-xs space-y-4">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-5 h-5 text-[#16803C]" />
-                  <h3 className="font-serif text-lg font-semibold text-[#0B1D3A]">
-                    {language === 'ta' ? 'நேரடி சேவைகள் மற்றும் நன்மைகள்' : 'Showroom Services & Direct Supply'}
-                  </h3>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 text-xs text-[#485A72]">
-                  <div className="p-3.5 rounded-lg bg-[#F8FAFD] border border-[#E4EEF9]">
-                    <p className="font-semibold text-[#0B1D3A] mb-1">
-                      {language === 'ta' ? 'அங்கீகரிக்கப்பட்ட டீலர்' : 'Genuine Brands'}
-                    </p>
-                    <p>
-                      {language === 'ta'
-                        ? 'செஞ்சுரி, கிரீன்பிளை, ஏசியன் பெயிண்ட்ஸ் நேரடி விற்பனை.'
-                        : 'CenturyPly, Greenply, Asian Paints authorised showroom stock.'}
-                    </p>
-                  </div>
-                  <div className="p-3.5 rounded-lg bg-[#F8FAFD] border border-[#E4EEF9]">
-                    <div className="flex items-center gap-1.5 mb-1">
-                      <Scissors className="w-3.5 h-3.5 text-[#0E4DA4]" />
-                      <p className="font-semibold text-[#0B1D3A]">
-                        {language === 'ta' ? 'அளவீடு & கட்டிங்' : 'Custom Cutting'}
-                      </p>
-                    </div>
-                    <p>
-                      {language === 'ta'
-                        ? 'தேவையான அளவுக்கு உடனுக்குடன் பிளைவுட் துல்லியமாக வெட்டித் தரப்படும்.'
-                        : 'Precision on-site sheet sizing and custom panel cutting.'}
-                    </p>
-                  </div>
-                  <div className="p-3.5 rounded-lg bg-[#F8FAFD] border border-[#E4EEF9]">
-                    <div className="flex items-center gap-1.5 mb-1">
-                      <Truck className="w-3.5 h-3.5 text-[#16803C]" />
-                      <p className="font-semibold text-[#0B1D3A]">
-                        {language === 'ta' ? 'உடனடி லோடிங்' : 'Instant Loading'}
-                      </p>
-                    </div>
-                    <p>
-                      {language === 'ta'
-                        ? 'நாமக்கல் மற்றும் சுற்றுவட்டார பகுதிகளுக்கு விரைவு டெலிவரி.'
-                        : 'Fast vehicle loading and Namakkal delivery dispatch.'}
-                    </p>
-                  </div>
-                </div>
               </div>
 
               {/* Elegant Minimal Brand Quotation Section (Balances Branch Office on Left) */}
