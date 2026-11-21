@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, Layers, Truck, ChevronLeft, ChevronRight, Instagram, Play, Pause } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Layers, Truck, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   PRODUCTS,
   HOME_CATEGORIES,
@@ -57,26 +57,6 @@ export function HomePage() {
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const categoryScrollRef = useRef<HTMLDivElement>(null);
 
-  const leftVideoRef = useRef<HTMLVideoElement>(null);
-  const rightVideoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  const togglePlayback = () => {
-    const left = leftVideoRef.current;
-    const right = rightVideoRef.current;
-    if (!left || !right) return;
-
-    if (isPlaying) {
-      left.pause();
-      right.pause();
-      setIsPlaying(false);
-    } else {
-      left.play().catch(() => {});
-      right.play().catch(() => {});
-      setIsPlaying(true);
-    }
-  };
-
   const scrollToCategory = (index: number) => {
     if (!categoryScrollRef.current) return;
     const targetIndex = (index + HOME_CATEGORIES.length) % HOME_CATEGORIES.length;
@@ -126,89 +106,26 @@ export function HomePage() {
   return (
     <PageTransition>
       {/* 1. Architectural Hero Section */}
-      <section className="relative min-h-[440px] sm:min-h-[500px] lg:min-h-[580px] flex items-center overflow-hidden bg-[#0B1D3A]">
-        {/* Seamless Continuous Panoramic Video Backdrop */}
+      <section className="relative min-h-[380px] sm:min-h-[480px] lg:min-h-[560px] flex items-center overflow-hidden bg-black">
+        {/* Crisp Native Video - No old images or poster */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 w-full h-full overflow-hidden"
+          className="absolute inset-0"
         >
-          {/* Dual Videos Blended Seamlessly into One Continuous Video (No Black Bars or Gaps) */}
-          <div className="relative w-full h-full flex items-center justify-between overflow-hidden">
-            {/* Left Video: Landscape Video shifted slightly to the left, full height */}
-            <div className="relative flex-1 h-full overflow-hidden">
-              <video
-                ref={leftVideoRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                className="w-full h-full object-cover object-[32%_center] sm:object-[25%_center] lg:object-[20%_center] transform -translate-x-3 sm:-translate-x-6 lg:-translate-x-10 scale-[1.04]"
-              >
-                <source src="/hero-video.mp4" type="video/mp4" />
-              </video>
-            </div>
-
-            {/* Right Video: Instagram Reel maintaining vertical 9:16 proportion & seamless left feathering */}
-            <div className="relative w-[50%] sm:w-[45%] md:w-[40%] lg:w-[35%] h-full shrink-0 overflow-hidden -ml-10 sm:-ml-16 lg:-ml-24 [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_22%)] [mask-image:linear-gradient(to_right,transparent_0%,black_22%)]">
-              <video
-                ref={rightVideoRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                className="w-full h-full object-cover object-center scale-[1.04]"
-              >
-                <source src="/instagram-reel.mp4" type="video/mp4" />
-              </video>
-            </div>
-
-            {/* Soft Seamless Feathery Junction Blend Overlay */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-y-0 right-[50%] sm:right-[45%] md:right-[40%] lg:right-[35%] translate-x-1/2 w-28 sm:w-44 bg-gradient-to-r from-transparent via-[#0B1D3A]/25 to-transparent backdrop-blur-[1px]"
-            />
-          </div>
-
-          {/* Unified Cinematic Gradient Overlay (Maintains high contrast for hero text & smooth visual cohesion) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/15 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/25 to-transparent pointer-events-none" />
-
-          {/* Discreet Play / Pause Toggle Button */}
-          <button
-            type="button"
-            onClick={togglePlayback}
-            aria-label={isPlaying ? 'Pause videos' : 'Play videos'}
-            className="absolute top-4 right-4 z-20 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-white/90 bg-black/55 hover:bg-black/80 backdrop-blur-md border border-white/20 transition-all shadow-md active:scale-95 cursor-pointer"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover"
           >
-            {isPlaying ? (
-              <>
-                <Pause className="w-3.5 h-3.5 text-white" />
-                <span className="hidden sm:inline">Pause</span>
-              </>
-            ) : (
-              <>
-                <Play className="w-3.5 h-3.5 text-white fill-white" />
-                <span>Play Video</span>
-              </>
-            )}
-          </button>
-
-          {/* Instagram Reel Direct Link Badge */}
-          <a
-            href="https://www.instagram.com/reels/Df4ZvHLSdnn/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-medium text-white bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/20 transition-all shadow-md active:scale-95"
-            title="View original reel on Instagram"
-          >
-            <Instagram className="w-3 h-3 text-[#E1306C]" />
-            <span className="hidden sm:inline">Instagram Reel</span>
-            <span>↗</span>
-          </a>
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
+          {/* Subtle bottom transition fade only */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
         </motion.div>
 
         {/* Minimal Hero Copy & Compact CTAs */}
