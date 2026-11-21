@@ -185,10 +185,9 @@ export function ContactPage() {
   };
 
   const whatsappUrl = `https://wa.me/${STORE_INFO.whatsappNumber}?text=${encodeURIComponent(
-    `Hello ${STORE_INFO.fullName}, I would like to enquire about ${
-      form.productInterest !== 'General Enquiry'
-        ? form.productInterest
-        : 'plywoods, paints and hardwares'
+    `Hello ${STORE_INFO.fullName}, I would like to enquire about ${form.productInterest !== 'General Enquiry'
+      ? form.productInterest
+      : 'plywoods, paints and hardwares'
     }.`
   )}`;
 
@@ -196,7 +195,7 @@ export function ContactPage() {
     'General Enquiry',
     ...PRODUCTS.map((p) => p.name),
     ...(preselectedProduct &&
-    !PRODUCTS.some((p) => p.name === preselectedProduct)
+      !PRODUCTS.some((p) => p.name === preselectedProduct)
       ? [preselectedProduct]
       : []),
   ];
@@ -725,9 +724,8 @@ export function ContactPage() {
                       <motion.span
                         key={`${word}-${idx}`}
                         variants={wordVariants}
-                        className={`inline-block mr-[0.28em] last:mr-0 ${
-                          isAccent ? 'text-[#0E4DA4]' : 'text-[#0B1D3A]'
-                        }`}
+                        className={`inline-block mr-[0.28em] last:mr-0 ${isAccent ? 'text-[#0E4DA4]' : 'text-[#0B1D3A]'
+                          }`}
                       >
                         {word}
                       </motion.span>

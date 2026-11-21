@@ -47,6 +47,7 @@ const BRAND_LOGOS: Record<
   sleek: {
     src: '/assets/brands/sleek.png',
     alt: 'Sleek Kitchen Specialist',
+    className: 'scale-110 sm:scale-115',
   },
   godrej: {
     src: '/assets/brands/godrej.png',
