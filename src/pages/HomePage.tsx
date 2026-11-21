@@ -125,11 +125,11 @@ export function HomePage() {
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
           {/* Subtle bottom transition fade with enhanced lower contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />
         </motion.div>
 
-        {/* Minimal Hero Copy & Compact CTAs (Anchored in lower third for clear visibility) */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14 lg:pb-18 pt-28 sm:pt-36 lg:pt-44 w-full">
+        {/* Minimal Hero Copy & Compact CTAs (Anchored right at bottom edge) */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6 lg:pb-8 pt-32 sm:pt-48 lg:pt-60 w-full">
           <div className="max-w-xl">
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
