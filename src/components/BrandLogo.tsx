@@ -65,6 +65,10 @@ const BRAND_LOGOS: Record<
     src: '/assets/brands/myk-laticrete.png',
     alt: 'MYK Laticrete',
   },
+  fosroc: {
+    src: '/assets/brands/fosroc.png',
+    alt: 'Fosroc Construction Chemicals',
+  },
 };
 
 export function BrandLogo({ brandId, compact = false }: BrandLogoProps) {

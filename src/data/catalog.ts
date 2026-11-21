@@ -469,7 +469,7 @@ export const PRODUCTS: ProductItem[] = [
       { label: 'Hydrostatic Resistance', value: 'Withstands up to 7 Bars of Positive Water Pressure' },
       { label: 'Protection', value: 'Anti-Efflorescence, UV Reflective & Algae-Proof Finish' },
     ],
-    brands: ['Asian Paints SmartCare', 'Dr. Fixit', 'Birla Opus', 'MYK Laticrete'],
+    brands: ['Asian Paints SmartCare', 'Dr. Fixit', 'Birla Opus', 'MYK Laticrete', 'Fosroc'],
   },
 ];
 
@@ -564,6 +564,13 @@ export const BRANDS: BrandItem[] = [
     category: 'Paints & Adhesives',
     specialty: 'Polymer-modified tile & stone adhesives, epoxy grouts, and surface waterproofing',
     tagline: 'Adhesives & Grouting Systems',
+  },
+  {
+    id: 'fosroc',
+    name: 'Fosroc',
+    category: 'Paints & Adhesives',
+    specialty: 'High-performance construction chemicals, concrete repair mortars, structural sealants, and waterproofing',
+    tagline: 'Constructive Solutions',
   },
 ];
 
